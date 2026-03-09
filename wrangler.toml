@@ -1,11 +1,2 @@
-name = "uipix-portfolio"
-type = "javascript"
-main = "src/index.js"
-site = { bucket = "dist" }
-
-env = { production = { routes = [{ pattern = "uipix.dev", zone_name = "uipix.dev" }] } }
-
-[env.production]
-route = "uipix.dev/*"
-zone_id = ""
-account_id = ""
+name = "uipix"
+pages_build_output_dir = "dist"
