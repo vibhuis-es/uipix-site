@@ -1,0 +1,30 @@
+---
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  prev?: NavLink;
+  next?: NavLink;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<section class="py-6 sm:py-8 border-t border-gray-200 bg-white">
+  <div class="max-w-5xl mx-auto px-5 md:px-8">
+    <div class="flex justify-between items-center">
+      {prev ? (
+        <a href={prev.href} class="text-sm text-gray-400 hover:text-black transition-colors">
+          &larr; {prev.label}
+        </a>
+      ) : <span></span>}
+      {next ? (
+        <a href={next.href} class="text-sm font-medium text-accent hover:text-blue-700 transition-colors">
+          {next.label} &rarr;
+        </a>
+      ) : <span></span>}
+    </div>
+  </div>
+</section>

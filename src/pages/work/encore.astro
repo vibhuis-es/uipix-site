@@ -1,0 +1,625 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import SectionHeader from '../../components/case-study/SectionHeader.astro';
+import ProcessBar from '../../components/case-study/ProcessBar.astro';
+import ComparisonGrid from '../../components/case-study/ComparisonGrid.astro';
+import MetricCards from '../../components/case-study/MetricCards.astro';
+import VideoEmbed from '../../components/case-study/VideoEmbed.astro';
+import ScreenGallery from '../../components/case-study/ScreenGallery.astro';
+import CaseStudyNav from '../../components/case-study/CaseStudyNav.astro';
+
+const desktopScreens = [
+  { src: '/images/encore/Executive-Dashboard.webp', alt: 'Executive Dashboard', caption: 'Executive Dashboard' },
+  { src: '/images/encore/BudgetAllocation.webp', alt: 'Budget Allocation', caption: 'Budget Allocation' },
+  { src: '/images/encore/Analytics.webp', alt: 'Analytics Dashboard', caption: 'Analytics' },
+  { src: '/images/encore/Screenshot-GM-Dashboard.webp', alt: 'GM Dashboard', caption: 'GM Dashboard' },
+  { src: '/images/encore/Expense-validation.webp', alt: 'Expense Validation', caption: 'Expense Validation' },
+  { src: '/images/encore/Expense-validation-fail.webp', alt: 'Validation Error State', caption: 'Budget Exceeded' },
+  { src: '/images/encore/Add-Expense.webp', alt: 'Add Expense', caption: 'Add Expense' },
+  { src: '/images/encore/Invoice-search.webp', alt: 'Invoice Search', caption: 'Invoice Search' },
+];
+
+const mobileScreens = [
+  { src: '/images/encore/Exe-dashboard-m.webp', alt: 'Executive Dashboard - Mobile', caption: 'Executive Dashboard' },
+  { src: '/images/encore/Budget-allo-m.webp', alt: 'Budget Allocation - Mobile', caption: 'Budget Allocation' },
+  { src: '/images/encore/Analytics-m.webp', alt: 'Analytics - Mobile', caption: 'Analytics' },
+  { src: '/images/encore/Gm-dashboard-m.webp', alt: 'GM Dashboard - Mobile', caption: 'GM Dashboard' },
+  { src: '/images/encore/Add-expense-m.webp', alt: 'Add Expense - Mobile', caption: 'Add Expense' },
+  { src: '/images/encore/Invoice-search-m.webp', alt: 'Invoice Search - Mobile', caption: 'Invoice Search' },
+];
+---
+
+<BaseLayout title="Encore - Hotel Financial Management Platform">
+
+  <!-- HERO -->
+  <CaseStudyHero
+    title="Encore"
+    subtitle="Hotel Financial Management Platform"
+    heroImage="/images/encore/Exe-mockup.webp"
+    bgImage="/images/encore/Executive-Dashboard.webp"
+    heroImageAlt="Encore Executive Dashboard"
+    duration="8 months"
+    platform="Web & Mobile"
+    role="UX Designer"
+  />
+
+  <!-- PROCESS BAR -->
+  <ProcessBar steps={['Overview', 'Research', 'IA & Flows', 'Wireframes', 'Visual Design', 'Prototype', 'Outcomes']} />
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 01 · OVERVIEW                                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-0" class="py-16 md:py-24 bg-gray-100">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="01"
+        label="Overview"
+        title="Replacing spreadsheets with clarity"
+      />
+      <div data-animate class="opacity-0">
+        <p class="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+          Encore is a financial management platform built for multi-property hotel groups. It replaces disconnected spreadsheets with a centralized system for budgeting, expense tracking, approvals, and analytics — serving four distinct user roles from admin teams to vice presidents.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed">
+          Over 8 months, I designed the complete experience across desktop and mobile — from stakeholder research and information architecture through wireframes, visual design, and interactive prototypes. The platform launched to 200+ hotels.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">The Problem</p>
+        <p class="text-gray-900 text-lg sm:text-xl md:text-2xl leading-relaxed font-light">
+          Hotel managers were drowning in spreadsheets. Financial planning happened across disconnected Excel files, making it nearly impossible to maintain centralized visibility into budgets, expenses, and forecasts.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed mt-6">
+          Without real-time analytics or a unified system, financial oversight was reactive rather than strategic. Budget decisions were delayed, approvals got lost in email threads, and vendor coordination suffered.
+        </p>
+      </div>
+    </div>
+
+    <!-- Before / After -->
+    <div class="max-w-3xl mx-auto px-5 md:px-8 mt-12 sm:mt-16">
+      <ComparisonGrid
+        leftLabel="Before"
+        leftItems={[
+          'Spreadsheet-based budgeting',
+          'No centralized visibility',
+          'Difficult data retrieval',
+          'Manual report generation',
+        ]}
+        rightLabel="After"
+        rightItems={[
+          'Centralized platform',
+          'Real-time data visibility',
+          'Instant historical access',
+          'Automated analytics',
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 02 · RESEARCH & DISCOVERY                      -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-1" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="02"
+        label="Research & Discovery"
+        title="Four distinct user roles"
+        description="The platform needed to serve multiple roles across the hotel management hierarchy, each with distinct responsibilities and decision-making needs."
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">GM</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">General Managers</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Monitor budgets, approve expenses, track performance at property level</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">RM</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Regional Managers</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Oversee properties, compare performance, spot trends across regions</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">AD</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Admin Teams</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Enter data accurately, submit expenses, coordinate vendors</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">VP</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Vice Presidents</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Strategic planning, portfolio visibility, data-driven decisions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Scenarios -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="Defining the Experience"
+        title="Key scenarios we designed for"
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">01</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Budget Allocation</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">GMs allocate quarterly budgets across departments, view spending trends, and adjust allocations based on seasonality and historical data.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">02</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Expense Approvals</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Approval workflows need to be visible, trackable, and fast — with mobile access for managers on the go.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">03</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Monthly & Yearly Analysis</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Regional and VP-level users need comparative dashboards with filtering by property, time period, and expense category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Principles (new for Encore — matches Car Care's section) -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="Design Direction"
+        title="UX design principles"
+        description="Core principles shaping every interaction across the Encore platform."
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Role-Based Views</p>
+            <p class="text-xs sm:text-sm text-gray-500">Each role sees exactly what they need, nothing more</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Progressive Disclosure</p>
+            <p class="text-xs sm:text-sm text-gray-500">Surface summaries first, drill-down for detail</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Mobile-First Approvals</p>
+            <p class="text-xs sm:text-sm text-gray-500">Managers can approve expenses on the go</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Data Density Balance</p>
+            <p class="text-xs sm:text-sm text-gray-500">Rich data without visual overwhelm</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Contextual Validation</p>
+            <p class="text-xs sm:text-sm text-gray-500">Real-time budget checks prevent overages</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Cross-Property Comparison</p>
+            <p class="text-xs sm:text-sm text-gray-500">Side-by-side analytics for portfolio decisions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 03 · INFORMATION ARCHITECTURE                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-2" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="03"
+        label="Information Architecture"
+        title="Role-based navigation structure"
+        description="Each user role accesses a tailored view of the platform, with shared components adapting to context."
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Executive View</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Portfolio Dashboard</p>
+            <p class="text-sm sm:text-base text-gray-500">High-level KPIs → Property comparison → Drill-down analytics</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">GM View</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Property Dashboard</p>
+            <p class="text-sm sm:text-base text-gray-500">Budget allocation → Expense approvals → Monthly reporting</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Admin View</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Data Entry Hub</p>
+            <p class="text-sm sm:text-base text-gray-500">Add expenses → Upload invoices → Submit for approval</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Regional View</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Multi-Property Analytics</p>
+            <p class="text-sm sm:text-base text-gray-500">Cross-property comparison → Trend analysis → Export reports</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 04 · WIREFRAMES                                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-3" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="04"
+        label="Wireframes"
+        title="Exploring structure first"
+        description="Low-fidelity wireframes to quickly test structural concepts with stakeholders. Focused on dashboard hierarchy, navigation patterns, and data density."
+      />
+    </div>
+
+    <!-- Desktop Wireframes -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-6">
+      <div data-animate class="opacity-0">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Desktop Screens</p>
+      </div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-4 md:px-8 mb-12 sm:mb-16">
+      <ScreenGallery
+        id="encore-desktop-wf"
+        screens={desktopScreens}
+        thumbWidth="100px"
+        duration={3500}
+      />
+    </div>
+
+    <!-- Mobile Wireframes -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-6 mt-12 sm:mt-16">
+      <div data-animate class="opacity-0">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Mobile Screens</p>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-4">
+          {mobileScreens.map((screen) => (
+            <div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-white">
+                <img
+                  src={screen.src}
+                  alt={screen.alt}
+                  class="w-full h-auto block"
+                  style="image-rendering: -webkit-optimize-contrast;"
+                />
+              </div>
+              <p class="text-[10px] sm:text-xs text-gray-400 text-center mt-1.5">{screen.caption}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 05 · VISUAL DESIGN                             -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-4" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="05"
+        label="Visual Design System"
+        title="Design system & visual language"
+        description="A consistent design language across desktop and mobile, optimized for dense financial data."
+      />
+
+      <!-- Design System Colors -->
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Design Tokens</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #1a1a2e;"></div>
+            <p class="text-xs font-mono text-gray-900">#1a1a2e</p>
+            <p class="text-[10px] text-gray-500">Dark Background</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #0656f6;"></div>
+            <p class="text-xs font-mono text-gray-900">#0656f6</p>
+            <p class="text-[10px] text-gray-500">Primary Action</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #22c55e;"></div>
+            <p class="text-xs font-mono text-gray-900">#22c55e</p>
+            <p class="text-[10px] text-gray-500">Positive / Income</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #ef4444;"></div>
+            <p class="text-xs font-mono text-gray-900">#ef4444</p>
+            <p class="text-[10px] text-gray-500">Alert / Over Budget</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design principles for visual -->
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Data-Dense but Clean</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Tables, charts, and KPIs use consistent spacing and hierarchy to stay scannable at any density.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Color as Communication</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Green = on track, red = over budget, blue = action needed. Semantic colors reduce cognitive load.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Responsive Dashboard Grid</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Desktop shows full analytics; mobile prioritizes approvals and KPIs with swipe navigation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 06 · HIGH-FIDELITY & PROTOTYPES                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-5" class="py-16 md:py-24 bg-gray-950 text-white overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-8 sm:mb-10">
+      <SectionHeader
+        step="06"
+        label="High-Fidelity Design"
+        title="The final product"
+        description="Role-specific dashboards that surface the most relevant information first, with progressive disclosure for deeper analysis."
+        light={true}
+      />
+    </div>
+
+    <!-- Desktop video 1 -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+      <div data-animate class="opacity-0">
+        <div class="rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+          <div class="relative w-full" style="padding-bottom: 46.5%;">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/jKuIf8Emt1A?rel=0&autoplay=1&mute=1&enablejsapi=1&controls=0&loop=1&playlist=jKuIf8Emt1A&fs=0"
+              title="Encore Desktop — Multi-Property Financial Oversight"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-8 sm:mb-10">
+      <div data-animate class="opacity-0">
+        <p class="font-semibold text-white text-sm sm:text-base">Multi-Property Financial Oversight</p>
+        <p class="text-gray-400 text-xs sm:text-sm">High-level financial monitoring and budget allocation across multiple properties.</p>
+      </div>
+    </div>
+
+    <!-- Mobile videos row -->
+    <div class="max-w-3xl mx-auto px-5 md:px-8 mb-8 sm:mb-10">
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mobile-trio-row">
+          <div class="rounded-xl overflow-hidden border border-gray-800 relative">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/yw_vJN2yiLw?rel=0&autoplay=1&mute=1&enablejsapi=1&controls=0&loop=1&playlist=yw_vJN2yiLw&fs=0"
+              title="Encore Mobile Walkthrough — Executive Role"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="rounded-xl overflow-hidden border border-gray-800 relative">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/HeyvwpUa11I?rel=0&autoplay=1&mute=1&enablejsapi=1&controls=0&loop=1&playlist=HeyvwpUa11I&fs=0"
+              title="Encore Mobile Walkthrough — GM Role"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="rounded-xl overflow-hidden border border-gray-800 relative mobile-scroll-col" id="mobile-scroll-gallery">
+            <div class="mobile-scroll-track">
+              <img src="/images/encore/Add-expense-m.webp" alt="Add Expense — Mobile" class="mobile-scroll-img" />
+              <img src="/images/encore/Budget-allocation-m.webp" alt="Budget Allocation — Mobile" class="mobile-scroll-img" />
+              <img src="/images/encore/Analytics-1m.webp" alt="Analytics — Mobile" class="mobile-scroll-img" />
+              <img src="/images/encore/Analytics-2m.webp" alt="Analytics Detail — Mobile" class="mobile-scroll-img" />
+              <img src="/images/encore/Search-invoice-m.webp" alt="Invoice Search — Mobile" class="mobile-scroll-img" />
+            </div>
+            <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
+              <span class="mobile-dot w-1.5 h-1.5 rounded-full bg-white transition-opacity" data-dot="0"></span>
+              <span class="mobile-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-opacity" data-dot="1"></span>
+              <span class="mobile-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-opacity" data-dot="2"></span>
+              <span class="mobile-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-opacity" data-dot="3"></span>
+              <span class="mobile-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-opacity" data-dot="4"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop video 2 -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+      <div data-animate class="opacity-0">
+        <div class="rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+          <div class="relative w-full" style="padding-bottom: 46.5%;">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/01qLnQE7ANs?rel=0&autoplay=1&mute=1&enablejsapi=1&controls=0&loop=1&playlist=01qLnQE7ANs&fs=0"
+              title="Encore Desktop — Daily Financial Operations"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="font-semibold text-white text-sm sm:text-base">Daily Financial Operations & Expense Management</p>
+        <p class="text-gray-400 text-xs sm:text-sm">Daily forecasting, expense management, and real-time financial insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 07 · OUTCOMES & REFLECTION                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-6" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="07"
+        label="Outcome & Impact"
+        title="Measurable results"
+        description="The platform launched to 200+ hotels and delivered measurable improvements in financial management efficiency."
+      />
+
+      <MetricCards
+        metrics={[
+          { value: '26%', label: 'Reduction in major expenses', detail: 'Better visibility & approval processes' },
+          { value: 'Real-time', label: 'Centralized data visibility', detail: 'Across all properties' },
+          { value: '3x', label: 'Faster expense approvals', detail: 'Days reduced to hours' },
+        ]}
+      />
+
+      <!-- Detailed impact -->
+      <div data-animate class="opacity-0 mt-8 sm:mt-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Budget allocation efficiency</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">General managers complete quarterly budget allocation in half the time, with better visibility into historical spending patterns.</p>
+          </div>
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Approval speed</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Mobile access to approval workflows reduced response times from days to hours, improving vendor relationships.</p>
+          </div>
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Data-driven decisions</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Regional and VP-level users gained access to comparative analytics for proactive financial planning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflection -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">Reflection</p>
+        <p class="text-gray-900 text-lg sm:text-xl leading-relaxed font-light">
+          This project reinforced the importance of designing for multiple user roles with fundamentally different needs. Balancing the complexity of enterprise financial data with the need for intuitive, fast workflows required constant iteration and stakeholder validation.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed mt-6">
+          The biggest challenge was resisting the temptation to add features that sounded useful but didn't directly support core workflows. Staying focused on budget allocation, approvals, and analysis resulted in a platform that felt purposeful rather than overwhelming.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <CaseStudyNav
+    prev={{ label: 'All Work', href: '/' }}
+    next={{ label: 'Car Care Inc.', href: '/work/carcare' }}
+  />
+
+</BaseLayout>
+
+<style>
+  .mobile-trio-row { height: 400px; }
+  @media (min-width: 640px) { .mobile-trio-row { height: 500px; } }
+  .mobile-trio-row > div { height: 100%; }
+  .mobile-scroll-col { overflow: hidden; }
+  .mobile-scroll-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-scroll-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
+  @media (min-width: 640px) {
+    .mobile-scroll-img { height: 500px; }
+  }
+</style>
+
+<script>
+  // Mobile image scroll gallery
+  (function () {
+    const gallery = document.getElementById('mobile-scroll-gallery');
+    if (!gallery) return;
+    const track = gallery.querySelector('.mobile-scroll-track') as HTMLElement;
+    const imgs = gallery.querySelectorAll('.mobile-scroll-img') as NodeListOf<HTMLElement>;
+    const dots = gallery.querySelectorAll('.mobile-dot') as NodeListOf<HTMLElement>;
+    const total = imgs.length;
+    if (!total || !track) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+    let paused = false;
+
+    function goTo(idx: number) {
+      current = idx;
+      const imgH = gallery.clientHeight;
+      track.style.transform = `translateY(-${idx * imgH}px)`;
+      dots.forEach((d, i) => {
+        d.style.opacity = i === idx ? '1' : '0.4';
+      });
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        if (!paused) goTo((current + 1) % total);
+      }, 2500);
+    }
+
+    gallery.addEventListener('mouseenter', () => { paused = true; });
+    gallery.addEventListener('mouseleave', () => { paused = false; });
+
+    dots.forEach((d) => {
+      d.addEventListener('click', () => {
+        goTo(parseInt((d as HTMLElement).dataset.dot || '0'));
+      });
+    });
+
+    goTo(0);
+    startAuto();
+  })();
+</script>

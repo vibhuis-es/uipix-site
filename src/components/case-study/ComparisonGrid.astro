@@ -1,0 +1,36 @@
+---
+interface Props {
+  leftLabel: string;
+  leftItems: string[];
+  rightLabel: string;
+  rightItems: string[];
+  leftColor?: string;
+  rightColor?: string;
+}
+
+const {
+  leftLabel,
+  leftItems,
+  rightLabel,
+  rightItems,
+  leftColor = 'text-red-500',
+  rightColor = 'text-green-600',
+} = Astro.props;
+---
+
+<div data-animate class="opacity-0">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 rounded-xl overflow-hidden border border-gray-200">
+    <div class="bg-white p-5 sm:p-6 md:p-8 border-b sm:border-b-0 sm:border-r border-gray-200">
+      <p class={`text-[11px] font-semibold ${leftColor} uppercase tracking-widest mb-4 sm:mb-5`}>{leftLabel}</p>
+      <ul class="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-600">
+        {leftItems.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div class="bg-white p-5 sm:p-6 md:p-8">
+      <p class={`text-[11px] font-semibold ${rightColor} uppercase tracking-widest mb-4 sm:mb-5`}>{rightLabel}</p>
+      <ul class="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-600">
+        {rightItems.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'UX Designer portfolio - Payal Bhutani' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title} — UiPix</title>
+  </head>
+  <body class="bg-white text-black">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Smooth scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation triggers
+      document.querySelectorAll('[data-animate]').forEach((el) => {
+        el.classList.add('opacity-0');
+        observer.observe(el);
+      });
+
+      // Staggered animations for lists
+      document.querySelectorAll('[data-animate-list] > *').forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+        el.classList.add('opacity-0', 'animate-fade-up');
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

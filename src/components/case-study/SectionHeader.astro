@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  description?: string;
+  step?: string;
+  light?: boolean;
+}
+
+const { label, title, description, step, light = false } = Astro.props;
+const titleColor = light ? 'text-white' : 'text-gray-900';
+const descColor = light ? 'text-gray-400' : 'text-gray-500';
+---
+
+<div data-animate class="opacity-0 mb-10 md:mb-12">
+  <div class="flex items-center gap-3 mb-4">
+    {step && (
+      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-bold flex-shrink-0">
+        {step}
+      </span>
+    )}
+    <p class="text-[11px] font-semibold text-accent uppercase tracking-widest">{label}</p>
+  </div>
+  <h2 class={`text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight ${titleColor}`}>{title}</h2>
+  {description && (
+    <p class={`${descColor} mt-3 max-w-xl text-base sm:text-lg leading-relaxed`}>{description}</p>
+  )}
+</div>

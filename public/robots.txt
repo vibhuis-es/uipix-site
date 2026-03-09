@@ -1,0 +1,12 @@
+# UiPix Portfolio - robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.astro/
+Disallow: /images/internal/
+
+# Sitemaps
+Sitemap: https://uipix.dev/sitemap.xml
+
+# Crawl delay (in seconds)
+Crawl-delay: 1

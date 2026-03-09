@@ -1,0 +1,25 @@
+---
+interface Metric {
+  value: string;
+  label: string;
+  detail: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<div data-animate class="opacity-0">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden border border-gray-200 bg-white">
+    {metrics.map((metric, i) => (
+      <div class={`p-6 sm:p-8 md:p-10 ${i < metrics.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-gray-200' : ''}`}>
+        <p class="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-2 sm:mb-3">{metric.value}</p>
+        <p class="font-medium text-gray-900 text-sm sm:text-base">{metric.label}</p>
+        <p class="text-xs sm:text-sm text-gray-400 mt-1">{metric.detail}</p>
+      </div>
+    ))}
+  </div>
+</div>

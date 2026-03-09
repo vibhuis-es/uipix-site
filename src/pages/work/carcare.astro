@@ -1,0 +1,592 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import SectionHeader from '../../components/case-study/SectionHeader.astro';
+import ProcessBar from '../../components/case-study/ProcessBar.astro';
+import ComparisonGrid from '../../components/case-study/ComparisonGrid.astro';
+import MetricCards from '../../components/case-study/MetricCards.astro';
+import VideoEmbed from '../../components/case-study/VideoEmbed.astro';
+import ScreenGallery from '../../components/case-study/ScreenGallery.astro';
+import CaseStudyNav from '../../components/case-study/CaseStudyNav.astro';
+
+const hifiScreens = [
+  { src: '/images/carcare/HiFi-1.png', alt: 'Work Order Dashboard', caption: 'Work Order Dashboard' },
+  { src: '/images/carcare/HiFi-2.webp', alt: 'Vehicle Intake', caption: 'Vehicle Intake' },
+  { src: '/images/carcare/HiFi-3.webp', alt: 'Diagnosis & Findings', caption: 'Diagnosis & Findings' },
+  { src: '/images/carcare/HiFi-4.webp', alt: 'Repair Summary', caption: 'Repair Summary' },
+];
+
+const wireframeScreens = [
+  { title: 'Screen 01', name: 'Home / Active Work Orders', desc: 'Dashboard showing all active jobs for quick access and status visibility.' },
+  { title: 'Screen 02', name: 'Vehicle Intake', desc: 'Quickly capture vehicle details using VIN scan with auto-fill capabilities.' },
+  { title: 'Screen 03', name: 'Customer Complaint Capture', desc: 'Record initial customer complaint using quick-select or voice input.' },
+  { title: 'Screen 04', name: 'Technician Diagnosis & Findings', desc: 'Document actual problems found using structured fault selection and photo capture.' },
+  { title: 'Screen 05', name: 'Repair Actions & Parts', desc: 'Select repair procedures and required parts with integrated catalog and pricing.' },
+  { title: 'Screen 06', name: 'Repair Summary & Estimate', desc: 'Complete cost breakdown ready for customer review with automatic totals.' },
+  { title: 'Screen 07', name: 'Customer Approval', desc: 'Customer-facing view with digital signature capture for work authorization.' },
+  { title: 'Screen 08', name: 'Job Completion & Billing', desc: 'Final invoice generation and work order closure with automated billing.' },
+];
+---
+
+<BaseLayout title="Car Care Inc. - Work Order Application">
+
+  <!-- HERO -->
+  <CaseStudyHero
+    title="Car Care Inc."
+    subtitle="Car Repair Work Order Application"
+    heroImage="/images/carcare/CC-ipad-mockup.png"
+    heroImageAlt="Car Care iPad Mockup"
+    duration="8 weeks"
+    platform="iPad App"
+    role="UX Designer"
+  />
+
+  <!-- PROCESS BAR -->
+  <ProcessBar steps={['Overview', 'Research', 'IA & Flows', 'Wireframes', 'Visual Design', 'Prototype', 'Outcomes']} />
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 01 · OVERVIEW                                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-0" class="py-16 md:py-24 bg-gray-100">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="01"
+        label="Overview"
+        title="Digitizing the repair workflow"
+      />
+      <div data-animate class="opacity-0">
+        <p class="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+          Car Care Inc. needed a purpose-built iPad app for their auto repair technicians. The goal was to replace paper-based work orders and fragmented desktop tools with a single, touch-optimized application that follows the natural repair workflow — from vehicle check-in to customer sign-off and billing.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed">
+          I led the UX design over 8 weeks, from user research and competitive analysis through wireframes, visual design, and an interactive prototype. The result: an app that reduced documentation time by 60%.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">The Problem</p>
+        <p class="text-gray-900 text-lg sm:text-xl md:text-2xl leading-relaxed font-light">
+          Senior technicians spend 30–45 minutes per work order typing vehicle details, diagnoses, and customer communications — taking them away from actual repair work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 02 · RESEARCH & DISCOVERY                      -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-1" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="02"
+        label="Research & Discovery"
+        title="Industry pain points & UX opportunities"
+      />
+
+      <div class="max-w-4xl">
+        <ComparisonGrid
+          leftLabel="Pain Points"
+          leftItems={[
+            'Too much manual documentation — technicians spend significant time writing repair notes',
+            'Repeating the same information — common issues documented from scratch every time',
+            'Switching between systems — paper forms, desktop software, and digital tools break flow',
+            'Slow customer approvals — waiting for customers creates idle time',
+            'Parts lookup friction — multiple steps and system switches required',
+          ]}
+          rightLabel="UX Opportunities"
+          rightItems={[
+            'Guided workflows — step-by-step flows that reduce decisions and mental load',
+            'Quick-select inputs — pre-populated options for common repairs and parts',
+            'Visual documentation — photo capture and annotation to minimize typing',
+            'Real-time summaries — auto-generated customer-facing summaries from technician input',
+            'Digital sign-off — in-app approval flow to eliminate delays and paper',
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Goals -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader label="Design Goals" title="Three core principles" />
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">01</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Minimize Typing</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">VIN scan + smart templates to cut manual entry drastically.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">02</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Fast Customer Sign-off</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Photos + digital signature for fully paperless approval workflows.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">03</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Work Offline</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Sync automatically when connected. Zero data loss in the workshop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Audit -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader label="Competitive Audit" title="Landscape analysis" />
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 sm:mb-10">
+          <div class="bg-white rounded-xl p-4 sm:p-5 hover:bg-gray-100 transition-colors border border-gray-100">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Shopmonkey</p>
+            <p class="text-xs sm:text-sm text-gray-500">Mobile technician tools, digital inspections with photos</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 hover:bg-gray-100 transition-colors border border-gray-100">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Tekmetric</p>
+            <p class="text-xs sm:text-sm text-gray-500">VIN scanning, mobile check-in workflows</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 hover:bg-gray-100 transition-colors border border-gray-100">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">RepairShopr</p>
+            <p class="text-xs sm:text-sm text-gray-500">Touchscreen signatures on invoices</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 hover:bg-gray-100 transition-colors border border-gray-100">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Mitchell 1</p>
+            <p class="text-xs sm:text-sm text-gray-500">Deep parts catalog integration</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate class="opacity-0">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Opportunities to Improve</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-lg p-4 border border-gray-100">
+            <p class="text-gray-700 text-sm sm:text-base">Fewer taps: Quick-select complaint chips vs. open text fields</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-100">
+            <p class="text-gray-700 text-sm sm:text-base">Voice notes for techs with low typing comfort</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-100">
+            <p class="text-gray-700 text-sm sm:text-base">Offline-first architecture and plain-language customer summaries</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Persona -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="Primary User"
+        title="Meet Bob — Senior Technician"
+        description="15 years experience. Values efficiency over features. The interface must feel intuitive from the first tap."
+      />
+
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm max-w-4xl mx-auto">
+          <img src="/images/carcare/Bob-Persona.webp" alt="Bob - Senior Technician Persona" class="w-full h-auto block" />
+        </div>
+      </div>
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-[11px] font-semibold text-green-600 uppercase tracking-widest mb-3">Goals</p>
+            <ul class="space-y-2 text-sm sm:text-base text-gray-600">
+              <li>Complete work orders fast</li>
+              <li>Document with photos</li>
+              <li>Easy customer sign-off</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-[11px] font-semibold text-red-500 uppercase tracking-widest mb-3">Frustrations</p>
+            <ul class="space-y-2 text-sm sm:text-base text-gray-600">
+              <li>Too much typing</li>
+              <li>Offline access failures</li>
+              <li>Repeat data entry</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-3">Design Implication</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Bob needs maximum efficiency with minimal learning curve. Success means completing documentation faster than his current method, without feeling like he's "learning software."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 03 · INFORMATION ARCHITECTURE & FLOWS          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-2" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="03"
+        label="Information Architecture"
+        title="Technician workflow overview"
+        description="Breaking down Bob's daily workflow into four key task flows the iPad app must support."
+      />
+
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/workflows.webp" alt="Technician Workflow Overview" class="w-full h-auto block" />
+        </div>
+      </div>
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Flow A</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Quick Check-in</p>
+            <p class="text-sm sm:text-base text-gray-500">VIN/Plate Scan → Auto-fill Vehicle Details</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Flow B</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Diagnosis</p>
+            <p class="text-sm sm:text-base text-gray-500">Quick-select Faults → Photos + Voice Note</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Flow C</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Customer Review</p>
+            <p class="text-sm sm:text-base text-gray-500">Photos + Estimate → Digital Signature</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Flow D</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Complete Job</p>
+            <p class="text-sm sm:text-base text-gray-500">Auto-generate Invoice → Payment Signature</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UX Design Principles -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="Design Direction"
+        title="UX design principles"
+        description="Core principles guiding every design decision for the workshop environment."
+      />
+
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/Design-direction.webp" alt="UX Design Principles" class="w-full h-auto block" />
+        </div>
+      </div>
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Minimize Typing</p>
+            <p class="text-xs sm:text-sm text-gray-500">VIN scan, voice input, quick-select over keyboards</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Maximize Quick-Select</p>
+            <p class="text-xs sm:text-sm text-gray-500">Pre-populated options for common repairs and parts</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Guided Workflow</p>
+            <p class="text-xs sm:text-sm text-gray-500">Step-by-step progression reduces cognitive load</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Reduce Cognitive Load</p>
+            <p class="text-xs sm:text-sm text-gray-500">One task per screen, clear hierarchy</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Workshop-Ready</p>
+            <p class="text-xs sm:text-sm text-gray-500">High contrast, large touch targets, glove-friendly</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Fail-Safe Documentation</p>
+            <p class="text-xs sm:text-sm text-gray-500">Auto-save, offline sync, zero data loss</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate class="opacity-0 mt-6 sm:mt-8">
+        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
+            <p class="font-semibold text-accent text-sm sm:text-base">Speed First</p>
+          </div>
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
+            <p class="font-semibold text-accent text-sm sm:text-base">Zero Learning Curve</p>
+          </div>
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
+            <p class="font-semibold text-accent text-sm sm:text-base">Workshop-Ready</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- User Journey Map -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="User Journey Mapping"
+        title="End-to-end: Check-in to billing"
+        description="Mapping Bob's complete experience through a typical work order."
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/UserJourneyMap.png" alt="End-to-End User Journey Map" class="w-full h-auto block" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 04 · WIREFRAMES                                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-3" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="04"
+        label="Low-Fidelity Wireframes"
+        title="iPad wireframes — flow-driven UX"
+        description="Translating user journeys into iPad-optimized screen structures. Canvas: 1024 × 1366 px (iPad Pro 11&quot;), touch-optimized with 44px minimum tap targets."
+      />
+
+      <!-- Wireframe spec images -->
+      <div data-animate class="opacity-0 mb-6 sm:mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+            <img src="/images/carcare/Wireframe-spec-1.webp" alt="Wireframe Specifications" class="w-full h-auto block" />
+          </div>
+          <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+            <img src="/images/carcare/Wireframe-spec-2.webp" alt="Wireframe Annotations" class="w-full h-auto block" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen Matrix -->
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/Screen-Matrix.webp" alt="Screen Matrix — Information Architecture" class="w-full h-auto block" />
+        </div>
+      </div>
+
+      <!-- Wireframe screen pairs -->
+      <div class="space-y-4 sm:space-y-6">
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-1.webp" alt="Wireframe — Screen 01 & 02" class="w-full h-auto block" />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-2.webp" alt="Wireframe — Screen 03 & 04" class="w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-3.webp" alt="Wireframe — Screen 03 Detail" class="w-full h-auto block" />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-4.webp" alt="Wireframe — Screen 04 Detail" class="w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-5.webp" alt="Wireframe — Screen 05 & 06" class="w-full h-auto block" />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-6.webp" alt="Wireframe — Screen 06 Detail" class="w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-7.webp" alt="Wireframe — Screen 07" class="w-full h-auto block" />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/carcare/CC-Wireframe-8.webp" alt="Wireframe — Screen 08" class="w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen descriptions -->
+      <div data-animate class="opacity-0 mt-8 sm:mt-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          {wireframeScreens.map((screen) => (
+            <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+              <div class="flex items-start gap-3 sm:gap-4">
+                <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <span class="text-accent font-bold text-xs">{screen.title.replace('Screen ', '')}</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{screen.name}</p>
+                  <p class="text-xs sm:text-sm text-gray-500 leading-relaxed">{screen.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 05 · VISUAL DESIGN                             -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-4" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="05"
+        label="Visual Design System"
+        title="Production-ready iPad experience"
+        description="Applying the Car Care Inc. visual identity to the validated wireframe structure."
+      />
+
+      <!-- Brand colors -->
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Brand Colors</p>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-100">
+            <div class="w-8 h-8 rounded-full" style="background: #0656f6;"></div>
+            <div>
+              <p class="text-xs font-mono text-gray-900">#0656f6</p>
+              <p class="text-[10px] text-gray-500">Primary Actions</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-100">
+            <div class="w-8 h-8 rounded-full" style="background: #465d8b;"></div>
+            <div>
+              <p class="text-xs font-mono text-gray-900">#465d8b</p>
+              <p class="text-[10px] text-gray-500">Secondary Emphasis</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-100">
+            <div class="w-8 h-8 rounded-full" style="background: #4698aa;"></div>
+            <div>
+              <p class="text-xs font-mono text-gray-900">#4698aa</p>
+              <p class="text-[10px] text-gray-500">Progress & Highlights</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-100">
+            <div class="w-8 h-8 rounded-full border border-gray-200" style="background: #f7f8fa;"></div>
+            <div>
+              <p class="text-xs font-mono text-gray-900">#f7f8fa</p>
+              <p class="text-[10px] text-gray-500">App Background</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand style + visual guide images -->
+      <div data-animate class="opacity-0 mb-4 sm:mb-6">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/Brand-style.webp" alt="Brand Style Guide — Typography & Components" class="w-full h-auto block" />
+        </div>
+      </div>
+      <div data-animate class="opacity-0">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/Visual-guide.webp" alt="Visual Design Guide" class="w-full h-auto block" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Fidelity Gallery -->
+  <section class="py-16 md:py-24 bg-gray-950 text-white overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-8 sm:mb-10">
+      <SectionHeader
+        label="High-Fidelity Designs"
+        title="Production-ready screens"
+        description="Fully branded screens with Car Care Inc. colors, large touch targets, and workshop-optimized contrast."
+        light={true}
+      />
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+      <ScreenGallery
+        id="cc-hifi"
+        screens={hifiScreens}
+        dark={true}
+        thumbWidth="80px"
+        duration={4500}
+      />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 06 · INTERACTIVE PROTOTYPE                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-5" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="06"
+        label="Interactive Prototype"
+        title="Try the experience"
+        description="A walkthrough of the final prototype demonstrating the complete work order flow."
+      />
+
+      <VideoEmbed
+        youtubeId="4hKuMWm3SQ8"
+        title="Car Care Inc. — Interactive Prototype Walkthrough"
+      />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 07 · OUTCOMES & REFLECTION                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-6" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="07"
+        label="Success Metrics"
+        title="Measurable impact"
+      />
+
+      <MetricCards
+        metrics={[
+          { value: '60%', label: 'Reduction in documentation time', detail: 'From 45min → 18min per work order' },
+          { value: '4 taps', label: 'From check-in to diagnosis', detail: 'VIN scan + quick-select complaints' },
+          { value: '95%', label: 'Customer approval rate', detail: 'Photos + plain language = trust' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Reflection -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">Reflection</p>
+        <p class="text-gray-900 text-lg sm:text-xl leading-relaxed font-light">
+          This project taught me that the best enterprise tools feel invisible. Bob doesn't want to "use an app" — he wants to finish his work order and get back under the hood.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed mt-6">
+          The key insight was treating the iPad as a clipboard replacement, not a computer replacement. Every design decision was filtered through one question: "Would Bob use this with greasy hands in a noisy workshop?" If the answer was no, we simplified further.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <CaseStudyNav
+    prev={{ label: 'Encore', href: '/work/encore' }}
+    next={{ label: 'Symbio6', href: '/work/symbio6' }}
+  />
+
+</BaseLayout>

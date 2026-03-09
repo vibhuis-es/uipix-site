@@ -1,0 +1,15 @@
+---
+interface Props {
+  delay?: number;
+}
+
+const { delay = 0 } = Astro.props;
+---
+
+<div
+  data-animate
+  class="opacity-0 animate-fade-up"
+  style={delay ? `animation-delay: ${delay}ms` : ''}
+>
+  <slot />
+</div>

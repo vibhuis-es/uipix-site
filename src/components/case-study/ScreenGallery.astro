@@ -1,0 +1,172 @@
+---
+interface Screen {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  id: string;
+  screens: Screen[];
+  dark?: boolean;
+  thumbWidth?: string;
+  duration?: number;
+}
+
+const { id, screens, dark = false, thumbWidth = '80px', duration = 4500 } = Astro.props;
+
+const borderColor = dark ? 'border-gray-800' : 'border-gray-200';
+const bgColor = dark ? 'bg-gray-900' : 'bg-gray-50';
+const captionColor = dark ? 'text-gray-400' : 'text-gray-500';
+const counterColor = dark ? 'text-gray-600' : 'text-gray-400';
+const progressBg = dark ? 'bg-gray-800' : 'bg-gray-200';
+---
+
+<div data-animate class="opacity-0">
+  <div class="screen-gallery" data-gallery={id} data-duration={duration}>
+    <div class={`sg-main rounded-xl overflow-hidden ${borderColor} border shadow-sm ${bgColor} relative`}>
+      {screens.map((screen, i) => (
+        <img
+          src={screen.src}
+          alt={screen.alt}
+          class={`sg-slide w-full block transition-all duration-700 ease-out ${i === 0 ? 'relative opacity-100 translate-x-0' : 'absolute top-0 left-0 opacity-0 translate-x-8'}`}
+          data-slide={i}
+          style={i === 0 ? '' : 'pointer-events: none;'}
+        />
+      ))}
+      <div class={`absolute bottom-0 left-0 right-0 h-[3px] ${progressBg}`}>
+        <div class="sg-progress h-full bg-accent transition-all duration-300 ease-linear" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mt-4 sm:mt-5 px-1">
+      <p class={`${captionColor} text-xs sm:text-sm sg-caption`}>{screens[0]?.caption || ''}</p>
+      <p class={`${counterColor} text-xs font-mono sg-counter`}>01 / {String(screens.length).padStart(2, '0')}</p>
+    </div>
+
+    <div class="flex gap-2 mt-4 sm:mt-5 overflow-x-auto scrollbar-hide pb-2">
+      {screens.map((screen, i) => (
+        <button
+          class={`sg-thumb flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-300 ${i === 0 ? 'border-accent opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
+          data-thumb={i}
+          style={`width: ${thumbWidth};`}
+        >
+          <img src={screen.src} alt={screen.alt} class="w-full h-auto block" />
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .sg-main { position: relative; overflow: hidden; }
+  .sg-slide.absolute { height: 100%; object-fit: cover; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  function initGalleries() {
+    document.querySelectorAll('.screen-gallery').forEach((el) => {
+      const gallery = el as HTMLElement;
+      if (gallery.dataset.initialized) return;
+      gallery.dataset.initialized = 'true';
+
+      const dur = parseInt(gallery.dataset.duration || '4500');
+      const slides = gallery.querySelectorAll('.sg-slide') as NodeListOf<HTMLElement>;
+      const thumbs = gallery.querySelectorAll('.sg-thumb') as NodeListOf<HTMLElement>;
+      const caption = gallery.querySelector('.sg-caption') as HTMLElement;
+      const counter = gallery.querySelector('.sg-counter') as HTMLElement;
+      const progressBar = gallery.querySelector('.sg-progress') as HTMLElement;
+      const total = slides.length;
+      if (!total) return;
+
+      // Extract captions from alt text or data
+      const captions = Array.from(slides).map((s) => {
+        const img = s as HTMLImageElement;
+        return img.alt || '';
+      });
+
+      let current = 0;
+      let timer: ReturnType<typeof setInterval>;
+      let progress = 0;
+      let progressTimer: ReturnType<typeof setInterval>;
+
+      function goTo(index: number) {
+        current = index;
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.style.opacity = '1';
+            slide.style.transform = 'translateX(0)';
+            slide.style.pointerEvents = 'auto';
+            slide.style.zIndex = '2';
+          } else {
+            slide.style.opacity = '0';
+            slide.style.transform = i > index ? 'translateX(16px)' : 'translateX(-16px)';
+            slide.style.pointerEvents = 'none';
+            slide.style.zIndex = '1';
+          }
+        });
+
+        if (caption) caption.textContent = captions[index] || '';
+        if (counter) counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+
+        thumbs.forEach((t, i) => {
+          t.classList.toggle('border-accent', i === index);
+          t.classList.toggle('border-transparent', i !== index);
+          t.classList.toggle('opacity-100', i === index);
+          t.classList.toggle('opacity-40', i !== index);
+        });
+
+        progress = 0;
+        if (progressBar) progressBar.style.width = '0%';
+      }
+
+      function startProgress() {
+        clearInterval(progressTimer);
+        progress = 0;
+        progressTimer = setInterval(() => {
+          progress += 50;
+          if (progressBar) progressBar.style.width = `${(progress / dur) * 100}%`;
+        }, 50);
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        startProgress();
+        timer = setInterval(() => {
+          goTo((current + 1) % total);
+          startProgress();
+        }, dur);
+      }
+
+      function stop() {
+        clearInterval(timer);
+        clearInterval(progressTimer);
+        if (progressBar) progressBar.style.width = '0%';
+      }
+
+      thumbs.forEach((t) => {
+        t.addEventListener('click', () => {
+          goTo(parseInt(t.dataset.thumb || '0'));
+          startAuto();
+        });
+      });
+
+      gallery.addEventListener('mouseenter', () => stop());
+      gallery.addEventListener('mouseleave', () => startAuto());
+
+      gallery.setAttribute('tabindex', '0');
+      gallery.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight') { goTo((current + 1) % total); startAuto(); }
+        if (e.key === 'ArrowLeft') { goTo((current - 1 + total) % total); startAuto(); }
+      });
+
+      startAuto();
+    });
+  }
+
+  // Run on page load and after Astro page transitions
+  initGalleries();
+  document.addEventListener('astro:page-load', initGalleries);
+</script>

@@ -1,0 +1,121 @@
+---
+interface ImageItem {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: ImageItem[];
+  speed?: number;       // seconds per full scroll cycle
+  direction?: 'left' | 'right';
+  height?: string;      // CSS height for images
+  variant?: 'desktop' | 'mobile' | 'mixed';
+  pauseOnHover?: boolean;
+}
+
+const {
+  images,
+  speed = 30,
+  direction = 'left',
+  height = '400px',
+  variant = 'desktop',
+  pauseOnHover = true,
+} = Astro.props;
+
+const uniqueId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
+
+// Double the images for seamless infinite loop
+const allImages = [...images, ...images];
+
+const imageClass = variant === 'mobile'
+  ? 'h-full w-auto rounded-2xl shadow-lg border border-gray-200'
+  : 'h-full w-auto rounded-xl shadow-lg border border-gray-100';
+
+const gapClass = variant === 'mobile' ? 'gap-6' : 'gap-8';
+---
+
+<div
+  class="carousel-wrapper relative overflow-hidden py-4"
+  data-carousel={uniqueId}
+  data-pause-hover={pauseOnHover}
+>
+  <!-- Gradient fade edges -->
+  <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-24 z-10 bg-gradient-to-r from-white to-transparent"></div>
+  <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-24 z-10 bg-gradient-to-l from-white to-transparent"></div>
+
+  <!-- Scrolling track -->
+  <div
+    class={`carousel-track flex ${gapClass} items-center`}
+    style={`animation: scroll-${direction} ${speed}s linear infinite; height: ${height};`}
+    data-track
+  >
+    {allImages.map((img, i) => (
+      <div class="carousel-slide flex-shrink-0 h-full">
+        <img
+          src={img.src}
+          alt={img.alt}
+          class={imageClass}
+          loading="lazy"
+        />
+        {img.caption && (
+          <p class="text-xs text-gray-500 text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            {img.caption}
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .carousel-wrapper:hover .carousel-track[data-pause="true"] {
+    animation-play-state: paused;
+  }
+
+  .carousel-track {
+    will-change: transform;
+  }
+
+  .carousel-slide img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .carousel-slide:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+</style>
+
+<script define:vars={{ uniqueId, pauseOnHover }}>
+  // Set up pause on hover
+  const wrapper = document.querySelector(`[data-carousel="${uniqueId}"]`);
+  const track = wrapper?.querySelector('[data-track]');
+
+  if (wrapper && track && pauseOnHover) {
+    wrapper.addEventListener('mouseenter', () => {
+      track.style.animationPlayState = 'paused';
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      track.style.animationPlayState = 'running';
+    });
+  }
+</script>

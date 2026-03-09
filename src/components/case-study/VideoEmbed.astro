@@ -1,0 +1,44 @@
+---
+interface Props {
+  youtubeId: string;
+  title: string;
+  autoplay?: boolean;
+  controls?: boolean;
+  aspectRatio?: string;
+}
+
+const {
+  youtubeId,
+  title,
+  autoplay = false,
+  controls = true,
+  aspectRatio = '56.25%',
+} = Astro.props;
+
+const params = new URLSearchParams({
+  rel: '0',
+  autoplay: autoplay ? '1' : '0',
+  mute: autoplay ? '1' : '0',
+  enablejsapi: '1',
+  controls: controls ? '1' : '0',
+  loop: '1',
+  playlist: youtubeId,
+  fs: '1',
+});
+---
+
+<div data-animate class="opacity-0">
+  <div class="rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+    <div class="relative w-full" style={`padding-bottom: ${aspectRatio};`}>
+      <iframe
+        class="absolute inset-0 w-full h-full"
+        src={`https://www.youtube.com/embed/${youtubeId}?${params.toString()}`}
+        title={title}
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</div>

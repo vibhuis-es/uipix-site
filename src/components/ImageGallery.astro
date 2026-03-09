@@ -1,0 +1,113 @@
+---
+/**
+ * Snap-scroll horizontal gallery with dots indicator.
+ * For sections where users may want to manually browse.
+ */
+interface ImageItem {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: ImageItem[];
+  height?: string;
+}
+
+const { images, height = '500px' } = Astro.props;
+const galleryId = `gallery-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="gallery-container" data-gallery={galleryId}>
+  <!-- Scroll track -->
+  <div
+    class="gallery-track flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+    style={`height: ${height};`}
+    data-track
+  >
+    {images.map((img, i) => (
+      <div class="gallery-slide flex-shrink-0 snap-center h-full" data-index={i}>
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="h-full w-auto rounded-xl shadow-lg border border-gray-100 object-contain"
+          loading="lazy"
+        />
+        {img.caption && (
+          <p class="text-sm text-gray-500 text-center mt-3">{img.caption}</p>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <!-- Dots indicator -->
+  {images.length > 1 && (
+    <div class="flex justify-center gap-2 mt-4" data-dots>
+      {images.map((_, i) => (
+        <button
+          class={`w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-accent w-6' : 'bg-gray-300'}`}
+          data-dot={i}
+          aria-label={`Go to image ${i + 1}`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-slide img {
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-slide:hover img {
+    transform: scale(1.01);
+  }
+</style>
+
+<script define:vars={{ galleryId }}>
+  const container = document.querySelector(`[data-gallery="${galleryId}"]`);
+  const track = container?.querySelector('[data-track]');
+  const dots = container?.querySelectorAll('[data-dot]');
+
+  if (track && dots?.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index || '0');
+            dots.forEach((dot, i) => {
+              if (i === index) {
+                dot.classList.remove('bg-gray-300', 'w-2');
+                dot.classList.add('bg-accent', 'w-6');
+              } else {
+                dot.classList.remove('bg-accent', 'w-6');
+                dot.classList.add('bg-gray-300', 'w-2');
+              }
+            });
+          }
+        });
+      },
+      { root: track, threshold: 0.6 }
+    );
+
+    track.querySelectorAll('[data-index]').forEach((slide) => {
+      observer.observe(slide);
+    });
+
+    // Click to scroll to image
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const slide = track.querySelector(`[data-index="${i}"]`);
+        slide?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+  }
+</script>

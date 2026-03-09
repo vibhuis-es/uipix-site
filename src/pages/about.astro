@@ -1,0 +1,302 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  {
+    date: 'Jul 2020',
+    endDate: 'Present',
+    company: 'Nio Digital',
+    role: 'Product Designer, Functional Consultant',
+    location: 'Remote',
+    highlights: [
+      'Designed end-to-end web experience for a loan origination platform, mapping multi-user customer journeys and creating interactive prototypes leveraging Figma.',
+      'Led comprehensive digital transformation, revamping an eCommerce platform and modernizing membership and event processes, resulting in significant user engagement.',
+      'Designed brand identity for Nio Digital — presentations, print materials, and demo videos. Managed marketing campaigns leveraging AI and ERP platforms.',
+    ],
+  },
+  {
+    date: 'Apr 2019',
+    endDate: 'Jun 2019',
+    company: 'BioconnetiX',
+    role: 'UI Designer',
+    location: 'Plano, TX',
+    highlights: [
+      'Conducted UX research with a multidisciplinary team of scientific researchers, product managers, and graphic designers to develop user flows, wireframes, and prototypes for healthcare platforms.',
+      'Designed intuitive interfaces for EMR, laboratory and patient users, enhancing the experience across the patient care continuum.',
+    ],
+  },
+  {
+    date: 'Feb 2017',
+    endDate: 'Nov 2017',
+    company: 'Techrover Solutions',
+    role: 'Lead Designer',
+    location: 'Richardson, TX',
+    highlights: [
+      'Revamped a Quote Management System — conducted need-finding and collaborated with stakeholders to redesign structure, introduce new features, and boost revenue by 66.67%.',
+      'Designed interface and experience for a mobile platform enabling hotel managers to manage expenses and approvals in real time.',
+      'Developed cross-platform brand identity and animated graphics for Techrover\'s online presence.',
+    ],
+  },
+  {
+    date: 'Sep 2011',
+    endDate: 'Oct 2016',
+    company: 'Milan Digital',
+    role: 'Senior Designer',
+    location: 'Remote',
+    highlights: [
+      'Spearheaded corporate website designs — 80% reduction in load time, 20% decrease in bounce rate.',
+      'Conducted user research and analytics-driven optimizations; produced animated videos and presentations for digital marketing.',
+    ],
+  },
+  {
+    date: 'Sep 2006',
+    endDate: 'Apr 2011',
+    company: 'Gateway Group of Companies',
+    role: 'Multimedia Developer',
+    location: 'Ahmedabad, India',
+    highlights: [
+      'Established design process for newspaper advertisements for "De Telegraph," the largest daily Dutch newspaper.',
+      'Trained an eight-member team on PDF preflighting and editing, creating error-free file guidelines.',
+      'Executed branding and advertising campaigns for real estate, education, and insurance clients.',
+    ],
+  },
+];
+
+const applications = ['Photoshop', 'Illustrator', 'InDesign', 'Figma', 'Sketch', 'Adobe XD', 'Canva', 'Premiere'];
+const designSkills = ['User Research', 'UI Design', 'UX Design', 'Prototyping', 'Wireframing', 'Branding', 'Design Systems', 'Usability Testing'];
+const otherSkills = ['Web Design', 'Brand Identity', 'Video Editing', 'Email Marketing', 'Social Marketing', 'ERP Software'];
+
+const interests = [
+  { emoji: '📖', label: 'Reading' },
+  { emoji: '🎧', label: 'Listening Music' },
+  { emoji: '🎹', label: 'Piano' },
+  { emoji: '✈️', label: 'New Experiences' },
+  { emoji: '📺', label: 'Netflix' },
+  { emoji: '🏠', label: 'Real Estate' },
+];
+
+const certifications = [
+  'Google UX Design Professional',
+  'HubSpot Growth Driven Design',
+  'HubSpot Content Marketing',
+  'HubSpot Email Marketing',
+  'HubSpot Inbound Marketing',
+];
+---
+
+<BaseLayout title="About - Payal Bhutani | UiPix">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO                                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-16 md:py-32 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div data-animate class="opacity-0">
+          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">About</p>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-5 sm:mb-6">
+            Payal Bhutani
+          </h1>
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-4">
+            I'm a UX Designer passionate about creating clear, intuitive experiences that solve real problems. With over 17 years of experience across various industries, I focus on understanding user needs and translating them into thoughtful design solutions.
+          </p>
+          <p class="text-sm text-gray-400">McKinney, Texas, USA</p>
+
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+            >
+              Get in Touch
+            </a>
+            <a
+              href="/PayalBhutani-Resume.pdf"
+              download
+              class="inline-flex items-center gap-2 border border-gray-200 text-gray-700 px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              Download Resume
+            </a>
+            <a
+              href="https://linkedin.com/in/payalbhutani"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 border border-gray-200 text-gray-700 px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div data-animate class="opacity-0">
+          <div class="relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/images/profile-photo.webp"
+                alt="Payal Bhutani"
+                class="w-full h-auto block"
+              />
+            </div>
+            <!-- Decorative accent -->
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-2xl -z-10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PROFESSIONAL BACKGROUND / TIMELINE           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-16 md:py-28 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0 mb-10 sm:mb-14 text-center">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">Professional Background</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">Experience timeline</h2>
+        <p class="text-gray-500 mt-3 max-w-lg mx-auto text-sm sm:text-base">Over 17 years of design experience — from print and multimedia to modern product design and UX research.</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative" data-animate>
+        <!-- Vertical line -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2"></div>
+
+        {experience.map((job, i) => (
+          <div class={`relative flex flex-col md:flex-row gap-6 md:gap-12 mb-12 last:mb-0 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <!-- Dot on timeline -->
+            <div class="absolute left-6 md:left-1/2 w-3 h-3 bg-accent rounded-full -translate-x-1/2 mt-2 z-10 ring-4 ring-gray-50"></div>
+
+            <!-- Content card -->
+            <div class={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:pr-4' : 'md:pl-4'}`}>
+              <div class="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-2 mb-3">
+                  <p class="text-xs font-mono text-accent">{job.date} — {job.endDate}</p>
+                  <span class="text-xs text-gray-300">•</span>
+                  <p class="text-xs text-gray-400">{job.location}</p>
+                </div>
+                <p class="font-semibold text-gray-900 text-base mb-1">{job.role}</p>
+                <p class="text-sm text-accent mb-3">{job.company}</p>
+                <ul class="space-y-2">
+                  {job.highlights.map((h) => (
+                    <li class="text-sm text-gray-500 leading-relaxed pl-3 border-l-2 border-gray-100">{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- APPLICATIONS / SKILLS / INTERESTS            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Applications -->
+        <div data-animate class="opacity-0">
+          <div class="bg-gray-50 rounded-xl p-6 h-full">
+            <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Applications</p>
+            <div class="flex flex-wrap gap-2">
+              {applications.map((app) => (
+                <span class="inline-block bg-white text-gray-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200">{app}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Design Skills -->
+        <div data-animate class="opacity-0">
+          <div class="bg-gray-50 rounded-xl p-6 h-full">
+            <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Design Skills</p>
+            <div class="flex flex-wrap gap-2">
+              {designSkills.map((skill) => (
+                <span class="inline-block bg-white text-gray-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200">{skill}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <div data-animate class="opacity-0">
+          <div class="bg-gray-50 rounded-xl p-6 h-full">
+            <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Interests</p>
+            <div class="flex flex-wrap gap-2">
+              {interests.map((item) => (
+                <span class="inline-flex items-center gap-1.5 bg-white text-gray-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200">
+                  <span>{item.emoji}</span> {item.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Other skills row -->
+      <div data-animate class="opacity-0 mt-8">
+        <div class="bg-gray-50 rounded-xl p-6">
+          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Other Skills</p>
+          <div class="flex flex-wrap gap-2">
+            {otherSkills.map((skill) => (
+              <span class="inline-block bg-white text-gray-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200">{skill}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- EDUCATION & CERTIFICATIONS                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Education -->
+        <div data-animate class="opacity-0">
+          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Education</p>
+          <div class="bg-white rounded-xl p-6 border border-gray-200">
+            <p class="font-semibold text-gray-900">Associate Degree in Fine Arts</p>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div data-animate class="opacity-0">
+          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-5">Certifications</p>
+          <div class="space-y-3">
+            {certifications.map((cert) => (
+              <div class="bg-white rounded-xl px-5 py-3 border border-gray-200">
+                <p class="text-sm sm:text-base text-gray-700">{cert}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CTA                                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 bg-gray-950 text-white">
+    <div class="max-w-3xl mx-auto px-5 md:px-8 text-center">
+      <div data-animate class="opacity-0">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Ready to bring your digital vision to life?</h2>
+        <p class="text-gray-400 mb-8 max-w-lg mx-auto">Let's collaborate to create innovative solutions that stand out. Reach out today and let's build something extraordinary together.</p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+        >
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

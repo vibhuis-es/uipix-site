@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  year: string;
+  duration: string;
+  platform: string;
+  role: string;
+  heroImage: string;
+}
+const { title, subtitle, year, duration, platform, role, heroImage } = Astro.props;
+---
+
+<section class="relative min-h-screen bg-black text-white flex items-end overflow-hidden">
+  <!-- Sticky background image -->
+  <div class="absolute inset-0">
+    <img
+      src={heroImage}
+      alt={title}
+      class="w-full h-full object-cover object-top opacity-40"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container relative z-10 pb-16 md:pb-24 pt-32">
+    <div class="max-w-3xl">
+      <p class="text-caption uppercase text-white/60 tracking-widest mb-4">{industry || 'Case Study'}</p>
+      <h1 class="text-display text-white mb-4">{title}</h1>
+      <p class="text-xl md:text-2xl text-white/80 font-light mb-10">{subtitle}</p>
+
+      <!-- Meta row -->
+      <div class="flex flex-wrap gap-8 text-sm text-white/50">
+        <div>
+          <p class="text-white/30 uppercase tracking-wider text-xs mb-1">Duration</p>
+          <p class="text-white/80">{duration}</p>
+        </div>
+        <div>
+          <p class="text-white/30 uppercase tracking-wider text-xs mb-1">Platform</p>
+          <p class="text-white/80">{platform}</p>
+        </div>
+        <div>
+          <p class="text-white/30 uppercase tracking-wider text-xs mb-1">Role</p>
+          <p class="text-white/80">{role}</p>
+        </div>
+        <div>
+          <p class="text-white/30 uppercase tracking-wider text-xs mb-1">Year</p>
+          <p class="text-white/80">{year}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+    <svg class="w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" />
+    </svg>
+  </div>
+</section>
+
+<script>
+  const { industry } = Astro.props;
+</script>

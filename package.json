@@ -1,0 +1,19 @@
+{
+  "name": "uipix-portfolio",
+  "version": "1.0.0",
+  "description": "UX Design Portfolio for Payal Bhutani",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "download-assets": "bash download-assets.sh"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.16.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0"
+  }
+}
