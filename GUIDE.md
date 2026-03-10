@@ -95,8 +95,20 @@ This is the easiest way to edit the site. Instead of editing code yourself, just
 
 3. Claude will make the changes and explain what it did
 4. Check your browser preview to see the changes
-5. If you like the changes, tell Claude: **"commit and push this"**
-6. Cloudflare will automatically deploy the updated site
+5. Once you're happy with the changes, tell Claude to save and deploy:
+
+**Commands to tell Claude after making changes:**
+
+| What to say | What it does |
+|---|---|
+| "commit and push" | Saves your changes and deploys to the live site |
+| "commit and push with message: updated bio" | Same, but with a custom description of what changed |
+| "undo the last change" | Reverts the most recent edit Claude made |
+| "revert the last commit" | Undoes the last saved/committed change |
+| "show me what changed" | Shows a summary of all pending changes before committing |
+
+6. After you say "commit and push", Cloudflare will automatically rebuild and deploy (takes 1-2 minutes)
+7. Check your live site to confirm the changes are live
 
 ### Adding New Images
 
