@@ -362,84 +362,111 @@ const wireframeScreens = [
       />
 
       <!-- Wireframe spec images -->
-      <div data-animate class="opacity-0 mb-6 sm:mb-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-            <img src="/images/carcare/Wireframe-spec-1.webp" alt="Wireframe Specifications" class="w-full h-auto block" />
-          </div>
-          <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-            <img src="/images/carcare/Wireframe-spec-2.webp" alt="Wireframe Annotations" class="w-full h-auto block" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Screen Matrix -->
-      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+      <div data-animate class="opacity-0 mb-6 sm:mb-8 space-y-6">
         <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-          <img src="/images/carcare/Screen-Matrix.webp" alt="Screen Matrix — Information Architecture" class="w-full h-auto block" />
+          <img src="/images/carcare/Wireframe-spec-1.webp" alt="Wireframe Specifications" class="w-full h-auto block" />
+        </div>
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/carcare/Wireframe-spec-2.webp" alt="Wireframe Annotations" class="w-full h-auto block" />
         </div>
       </div>
 
-      <!-- Wireframe screen pairs -->
-      <div class="space-y-4 sm:space-y-6">
+      <!-- Wireframe screens with titles -->
+      <div class="space-y-10 sm:space-y-14">
+        <!-- Screen 01 & 02 -->
         <div data-animate class="opacity-0">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-1.webp" alt="Wireframe — Screen 01 & 02" class="w-full h-auto block" />
-            </div>
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-2.webp" alt="Wireframe — Screen 03 & 04" class="w-full h-auto block" />
-            </div>
-          </div>
-        </div>
-        <div data-animate class="opacity-0">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-3.webp" alt="Wireframe — Screen 03 Detail" class="w-full h-auto block" />
-            </div>
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-4.webp" alt="Wireframe — Screen 04 Detail" class="w-full h-auto block" />
-            </div>
-          </div>
-        </div>
-        <div data-animate class="opacity-0">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-5.webp" alt="Wireframe — Screen 05 & 06" class="w-full h-auto block" />
-            </div>
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-6.webp" alt="Wireframe — Screen 06 Detail" class="w-full h-auto block" />
-            </div>
-          </div>
-        </div>
-        <div data-animate class="opacity-0">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-7.webp" alt="Wireframe — Screen 07" class="w-full h-auto block" />
-            </div>
-            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img src="/images/carcare/CC-Wireframe-8.webp" alt="Wireframe — Screen 08" class="w-full h-auto block" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screen descriptions -->
-      <div data-animate class="opacity-0 mt-8 sm:mt-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-          {wireframeScreens.map((screen) => (
-            <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200 hover:border-accent/30 hover:shadow-md transition-all duration-300">
-              <div class="flex items-start gap-3 sm:gap-4">
-                <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <span class="text-accent font-bold text-xs">{screen.title.replace('Screen ', '')}</span>
-                </div>
-                <div>
-                  <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{screen.name}</p>
-                  <p class="text-xs sm:text-sm text-gray-500 leading-relaxed">{screen.desc}</p>
-                </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 01 — Home / Active Work Orders</p>
+                <p class="text-xs sm:text-sm text-gray-500">Dashboard showing all active jobs for quick access and status visibility.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-1.webp" alt="Wireframe — Screen 01" class="w-full h-auto block" />
               </div>
             </div>
-          ))}
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 02 — Vehicle Intake</p>
+                <p class="text-xs sm:text-sm text-gray-500">Quickly capture vehicle details using VIN scan with auto-fill capabilities.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-2.webp" alt="Wireframe — Screen 02" class="w-full h-auto block" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 03 & 04 -->
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 03 — Customer Complaint Capture</p>
+                <p class="text-xs sm:text-sm text-gray-500">Record initial customer complaint using quick-select or voice input.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-3.webp" alt="Wireframe — Screen 03" class="w-full h-auto block" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 04 — Technician Diagnosis & Findings</p>
+                <p class="text-xs sm:text-sm text-gray-500">Document actual problems found using structured fault selection and photo capture.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-4.webp" alt="Wireframe — Screen 04" class="w-full h-auto block" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 05 & 06 -->
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 05 — Repair Actions & Parts</p>
+                <p class="text-xs sm:text-sm text-gray-500">Select repair procedures and required parts with integrated catalog and pricing.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-5.webp" alt="Wireframe — Screen 05" class="w-full h-auto block" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 06 — Repair Summary & Estimate</p>
+                <p class="text-xs sm:text-sm text-gray-500">Complete cost breakdown ready for customer review with automatic totals.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-6.webp" alt="Wireframe — Screen 06" class="w-full h-auto block" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 07 & 08 -->
+        <div data-animate class="opacity-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 07 — Customer Approval</p>
+                <p class="text-xs sm:text-sm text-gray-500">Customer-facing view with digital signature capture for work authorization.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-7.webp" alt="Wireframe — Screen 07" class="w-full h-auto block" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="mb-3 sm:min-h-[3.5rem]">
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">Screen 08 — Job Completion & Billing</p>
+                <p class="text-xs sm:text-sm text-gray-500">Final invoice generation and work order closure with automated billing.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                <img src="/images/carcare/CC-Wireframe-8.webp" alt="Wireframe — Screen 08" class="w-full h-auto block" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -536,13 +563,15 @@ const wireframeScreens = [
       <SectionHeader
         step="06"
         label="Interactive Prototype"
-        title="Try the experience"
-        description="A walkthrough of the final prototype demonstrating the complete work order flow."
+        title="Prototype walkthrough"
+        description="End-to-end work order flow from vehicle intake through billing and job completion."
       />
 
       <VideoEmbed
         youtubeId="4hKuMWm3SQ8"
         title="Car Care Inc. — Interactive Prototype Walkthrough"
+        autoplay={true}
+        controls={false}
       />
     </div>
   </section>

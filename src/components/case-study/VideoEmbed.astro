@@ -23,12 +23,17 @@ const params = new URLSearchParams({
   controls: controls ? '1' : '0',
   loop: '1',
   playlist: youtubeId,
-  fs: '1',
+  fs: '0',
+  modestbranding: '1',
+  showinfo: '0',
+  iv_load_policy: '3',
+  disablekb: '1',
+  playsinline: '1',
 });
 ---
 
 <div data-animate class="opacity-0">
-  <div class="rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+  <div class="video-embed-frame rounded-xl overflow-hidden border border-gray-200 shadow-lg">
     <div class="relative w-full" style={`padding-bottom: ${aspectRatio};`}>
       <iframe
         class="absolute inset-0 w-full h-full"
@@ -36,9 +41,25 @@ const params = new URLSearchParams({
         title={title}
         frameborder="0"
         allow="autoplay; encrypted-media"
-        allowfullscreen
         loading="lazy"
       ></iframe>
     </div>
   </div>
 </div>
+
+<style>
+  .video-embed-frame {
+    position: relative;
+    overflow: hidden;
+  }
+  .video-embed-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: default;
+  }
+  .video-embed-frame iframe {
+    pointer-events: none;
+  }
+</style>

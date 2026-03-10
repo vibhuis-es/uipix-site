@@ -24,7 +24,7 @@ const progressBg = dark ? 'bg-gray-800' : 'bg-gray-200';
 
 <div data-animate class="opacity-0">
   <div class="screen-gallery" data-gallery={id} data-duration={duration}>
-    <div class={`sg-main rounded-xl overflow-hidden ${borderColor} border shadow-sm ${bgColor} relative`}>
+    <div class={`sg-main rounded-xl overflow-hidden ${borderColor} border shadow-sm ${bgColor} relative group`}>
       {screens.map((screen, i) => (
         <img
           src={screen.src}
@@ -34,6 +34,12 @@ const progressBg = dark ? 'bg-gray-800' : 'bg-gray-200';
           style={i === 0 ? '' : 'pointer-events: none;'}
         />
       ))}
+      <button class="sg-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70" aria-label="Previous screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="sg-next absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70" aria-label="Next screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
       <div class={`absolute bottom-0 left-0 right-0 h-[3px] ${progressBg}`}>
         <div class="sg-progress h-full bg-accent transition-all duration-300 ease-linear" style="width: 0%"></div>
       </div>
@@ -152,6 +158,21 @@ const progressBg = dark ? 'bg-gray-800' : 'bg-gray-200';
           startAuto();
         });
       });
+
+      const prevBtn = gallery.querySelector('.sg-prev') as HTMLElement;
+      const nextBtn = gallery.querySelector('.sg-next') as HTMLElement;
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          goTo((current - 1 + total) % total);
+          startAuto();
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          goTo((current + 1) % total);
+          startAuto();
+        });
+      }
 
       gallery.addEventListener('mouseenter', () => stop());
       gallery.addEventListener('mouseleave', () => startAuto());
