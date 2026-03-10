@@ -66,7 +66,7 @@ const progressBg = dark ? 'bg-gray-800' : 'bg-gray-200';
 
 <style>
   .sg-main { position: relative; overflow: hidden; }
-  .sg-slide.absolute { height: 100%; object-fit: cover; }
+  .sg-slide.absolute { height: auto; max-height: 100%; width: 100%; object-fit: contain; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
 </style>
