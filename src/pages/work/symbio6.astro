@@ -1,53 +1,544 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import SectionHeader from '../../components/case-study/SectionHeader.astro';
+import ProcessBar from '../../components/case-study/ProcessBar.astro';
+import ComparisonGrid from '../../components/case-study/ComparisonGrid.astro';
+import MetricCards from '../../components/case-study/MetricCards.astro';
+import ScreenGallery from '../../components/case-study/ScreenGallery.astro';
+import CaseStudyNav from '../../components/case-study/CaseStudyNav.astro';
+
+const wireframeScreens = [
+  { src: '/images/symbio6/wf-dashboard-setup.png', alt: 'Dashboard — Account Setup', caption: 'Account Setup' },
+  { src: '/images/symbio6/wf-dashboard-welcome.png', alt: 'Dashboard — Welcome', caption: 'Welcome Dashboard' },
+  { src: '/images/symbio6/wf-dashboard-success.png', alt: 'Dashboard — Onboarding Complete', caption: 'Onboarding Complete' },
+  { src: '/images/symbio6/wf-find-provider-name.png', alt: 'Find a Provider — Name Search', caption: 'Find by Name' },
+  { src: '/images/symbio6/wf-find-provider-npi.png', alt: 'Find a Provider — NPI Search', caption: 'Find by NPI' },
+  { src: '/images/symbio6/wf-find-provider-org.png', alt: 'Find a Provider — Organization', caption: 'Find by Organization' },
+  { src: '/images/symbio6/wf-records-landing.png', alt: 'My Medical Records — Landing', caption: 'Records Landing' },
+  { src: '/images/symbio6/wf-records-view.png', alt: 'My Medical Records — View', caption: 'Records View' },
+  { src: '/images/symbio6/wf-records-share.png', alt: 'My Medical Records — Download & Send', caption: 'Share Records' },
+];
+
+const mobileScreens = [
+  { src: '/images/symbio6/mobile-login.png', alt: 'Login Screen', caption: 'Login' },
+  { src: '/images/symbio6/mobile-otp.png', alt: 'OTP Verification', caption: 'Verify OTP' },
+  { src: '/images/symbio6/mobile-home.png', alt: 'Home Dashboard', caption: 'Dashboard' },
+  { src: '/images/symbio6/mobile-find-doctor.png', alt: 'Find a Doctor', caption: 'Find Doctor' },
+  { src: '/images/symbio6/mobile-schedule.png', alt: 'Schedule Appointment', caption: 'Schedule' },
+  { src: '/images/symbio6/mobile-nav.png', alt: 'Side Navigation', caption: 'Navigation' },
+];
 ---
 
-<BaseLayout title="Symbio6 - Coming Soon">
-  <section class="py-32 md:py-40 flex items-center justify-center min-h-[60vh]">
-    <div class="container-prose text-center" data-animate>
-      <div class="opacity-0">
-        <span class="text-sm font-semibold text-accent">Case Study</span>
-        <h1 class="mt-4 mb-6">Symbio6</h1>
-        <p class="text-xl text-gray-600 mb-8">Healthcare Platform (Coming Soon)</p>
+<BaseLayout title="Symbio6 — Integrated Healthcare Platform">
 
-        <div class="max-w-md mx-auto mb-12">
-          <img
-            src="/images/symbio6-placeholder.webp"
-            alt="Symbio6"
-            class="w-full h-auto rounded-lg shadow-lg"
-          />
+  <!-- HERO -->
+  <CaseStudyHero
+    title="Symbio6"
+    subtitle="Integrated Healthcare Platform & Patient Portal"
+    heroImage="/images/symbio6/heroshot.png"
+    bgImage="/images/symbio6/mobile-find-doctor.png"
+    heroImageAlt="mybioX — Patient Portal on MacBook"
+    duration="12 weeks"
+    platform="Web & Mobile"
+    role="UX Designer"
+  />
+
+  <!-- PROCESS BAR -->
+  <ProcessBar steps={['Overview', 'Research', 'IA & Flows', 'Wireframes', 'Visual Design', 'Mobile App', 'Outcomes']} />
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 01 · OVERVIEW                                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-0" class="py-16 md:py-24 bg-gray-100">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="01"
+        label="Overview"
+        title="Connecting patients to their health data"
+      />
+      <div data-animate class="opacity-0">
+        <p class="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+          Symbio6 INTEGRATE is a healthcare platform designed to bridge the gap between laboratory workflows and patient-facing access. At its core is mybioX — a patient portal and mobile app that gives individuals a unified place to manage their health records, find providers, build their care team, and stay connected to their healthcare journey.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed">
+          I led UX design across both the web portal and mobile app, working through customer journey research, complex lab workflow documentation, information architecture, wireframes, and a fully designed mobile experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">The Problem</p>
+        <p class="text-gray-900 text-lg sm:text-xl md:text-2xl leading-relaxed font-light">
+          Patients have no single place to access, manage, or share their health data. Records are scattered across providers, labs process specimens through disconnected workflows, and patients are left out of the loop entirely.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed mt-6">
+          The Symbio6 platform needed to solve two parallel problems: digitize and standardize laboratory testing workflows for clinical staff, and give patients a consumer-grade portal to take ownership of their health information.
+        </p>
+      </div>
+    </div>
+
+    <!-- Before / After -->
+    <div class="max-w-3xl mx-auto px-5 md:px-8 mt-12 sm:mt-16">
+      <ComparisonGrid
+        leftLabel="Before"
+        leftItems={[
+          'Records fragmented across providers',
+          'No patient visibility into lab results',
+          'Manual, paper-based lab workflows',
+          'Providers searched separately per system',
+          'No centralized emergency health data',
+        ]}
+        rightLabel="After"
+        rightItems={[
+          'Unified health record hub',
+          'Real-time record access and sharing',
+          'Digitized lab workflow with exception handling',
+          'NPI database-connected provider finder',
+          'mybioX ID card with emergency plan',
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 02 · RESEARCH & DISCOVERY                      -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-1" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="02"
+        label="Research & Discovery"
+        title="Mapping the patient care continuum"
+        description="Research covered two tracks: patient-facing journey mapping across the full care continuum, and deep documentation of laboratory testing workflows across three analytical phases."
+      />
+
+      <!-- Customer Journey Map -->
+      <div data-animate class="opacity-0 mb-12 sm:mb-16">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Customer Journey — INTEGRATE: Connected Care Across the Patient Care Continuum</p>
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/symbio6/customer-journey.png" alt="Symbio6 INTEGRATE — Patient Care Continuum Journey Map" class="w-full h-auto block" />
         </div>
-
-        <div class="bg-blue-50 border border-blue-100 rounded-lg p-8 mb-8">
-          <p class="text-gray-700 text-lg mb-4">
-            A UX design project in the healthcare space focused on improving patient engagement and clinical workflows.
-          </p>
-          <p class="text-gray-600">
-            This case study is currently being developed. Check back soon for the full project breakdown, design process, and impact metrics.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div class="bg-white border border-gray-200 rounded-lg p-6">
-            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Year</p>
-            <p class="text-lg font-semibold text-gray-900">2020</p>
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <p class="font-semibold text-gray-900 text-sm mb-1">5 Actor Lanes</p>
+            <p class="text-xs text-gray-500">Specialist, Laboratory, Patient, Hands on Care Provider, Payor — mapped across the full care continuum</p>
           </div>
-          <div class="bg-white border border-gray-200 rounded-lg p-6">
-            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Industry</p>
-            <p class="text-lg font-semibold text-gray-900">Healthcare</p>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <p class="font-semibold text-gray-900 text-sm mb-1">End-to-End Flow</p>
+            <p class="text-xs text-gray-500">Digital intake → diagnostic order → multidisciplinary collaboration → analytical testing → interpretation → care</p>
           </div>
-          <div class="bg-white border border-gray-200 rounded-lg p-6">
-            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Role</p>
-            <p class="text-lg font-semibold text-gray-900">UX Designer</p>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <p class="font-semibold text-gray-900 text-sm mb-1">4 Platform Products</p>
+            <p class="text-xs text-gray-500">INTEGRATE, UTILIZE, InformatiX, and mybioX — each solving a distinct part of the care pathway</p>
           </div>
         </div>
+      </div>
 
-        <div class="text-center">
-          <a href="/" class="text-accent hover:text-blue-700 transition-colors font-semibold">
-            ← Back to Work
-          </a>
+      <!-- User Roles -->
+      <div data-animate class="opacity-0 mb-12 sm:mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">PT</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Patients</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Access records, find providers, manage care team and emergency plans</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">LB</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Lab Staff</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Process specimens through pre-analytical, analytical, and post-analytical phases</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">MD</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Providers</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Order tests, review results, and receive records shared directly by patients</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 hover:bg-gray-100 transition-colors border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <span class="text-accent font-bold text-xs">AD</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Administrators</p>
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Manage platform users, configure rules, notifications, and attestations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lab Workflow Documentation -->
+      <SectionHeader
+        label="Lab Workflow Documentation"
+        title="Three phases of laboratory testing"
+        description="Before designing the patient-facing experience, we documented the complete laboratory workflow — the backbone of the data patients would access."
+      />
+
+      <div data-animate class="opacity-0 mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="bg-white rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">01</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Pre-Analytical</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Specimen collection, order signature verification, rejection handling, and patient consent workflows.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">02</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Analytical</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">In-house testing, reflex test documentation, and send-out to reference laboratories with exception tracking.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">03</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Post-Analytical</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Result publishing, amended results, attestation worklists, and billing file generation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytical Workflow image -->
+      <div data-animate class="opacity-0">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Analytical Workflow — Manage Workflow [PAL-00501]</p>
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <img src="/images/symbio6/lab-workflow-analytical.png" alt="Analytical Lab Workflow Diagram" class="w-full h-auto block" />
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Exception Workflows -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        label="Exception Workflows"
+        title="Designing for edge cases"
+        description="Real lab environments are full of exceptions. We documented two critical exception paths that required their own UX flows."
+      />
+
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Send-Out to Reference Laboratory</p>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/symbio6/lab-workflow-sendout.png" alt="Exception Workflow — Send-Out to Reference Laboratory" class="w-full h-auto block" />
+            </div>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Reflex Test & Send-Out Occurrence</p>
+            <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <img src="/images/symbio6/lab-workflow-reflex.png" alt="Exception Workflow — Reflex Test and Send-Out" class="w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 03 · INFORMATION ARCHITECTURE                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-2" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="03"
+        label="Information Architecture"
+        title="mybioX portal structure"
+        description="The portal needed to serve a patient's complete healthcare lifecycle — from account setup through ongoing record management, provider connectivity, and emergency access."
+      />
+
+      <div data-animate class="opacity-0 mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Core Navigation</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Dashboard</p>
+            <p class="text-sm sm:text-base text-gray-500">Onboarding → Contact & personal info → mybioX ID card mailing</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Records Hub</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">My Health Records</p>
+            <p class="text-sm sm:text-base text-gray-500">Upload manually → Connect electronically → Download, print, or send to providers</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Provider Connectivity</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">Find a Provider</p>
+            <p class="text-sm sm:text-base text-gray-500">Search the NPI database by NPI number, name, or organization</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="text-accent font-bold text-xs mb-2">Health Management</p>
+            <p class="font-semibold text-gray-900 mb-1 text-base">My Health Data & Care Team</p>
+            <p class="text-sm sm:text-base text-gray-500">Vitals, insurance, documents, emergency plan, bill payment</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- UX Principles -->
+      <div data-animate class="opacity-0">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">UX Design Principles</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Patient Empowerment</p>
+            <p class="text-xs sm:text-sm text-gray-500">Give patients full ownership and control over their records</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Trust Through Transparency</p>
+            <p class="text-xs sm:text-sm text-gray-500">Always show patients what data is shared and with whom</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Guided Onboarding</p>
+            <p class="text-xs sm:text-sm text-gray-500">Step-by-step setup that educates while it registers</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Standards Compliance</p>
+            <p class="text-xs sm:text-sm text-gray-500">NPI database integration and HIPAA-aligned access controls</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Mobile-First Access</p>
+            <p class="text-xs sm:text-sm text-gray-500">Full feature parity across web portal and mobile app</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Emergency Readiness</p>
+            <p class="text-xs sm:text-sm text-gray-500">Critical health data accessible even in emergency scenarios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 04 · WIREFRAMES                                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-3" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="04"
+        label="Wireframes"
+        title="Three core patient journeys"
+        description="Wireframes focused on the three highest-impact areas: account setup and dashboard, finding a provider, and accessing medical records."
+      />
+    </div>
+
+    <!-- Wireframe Gallery -->
+    <div class="max-w-[1400px] mx-auto px-4 md:px-8 mb-12 sm:mb-16">
+      <ScreenGallery
+        id="symbio6-wireframes"
+        screens={wireframeScreens}
+        thumbWidth="90px"
+        duration={4000}
+      />
+    </div>
+
+    <!-- Journey descriptions -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">01</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Dashboard & Onboarding</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Guided account setup collecting contact info, personal details, and mailing address for the mybioX ID card — with progressive disclosure across tabs.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">02</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">Find a Provider</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">NPI database search with three modes: NPI number, first and last name, or organization — each returning standardized provider data with address, phone, and taxonomy.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5 sm:p-6 border border-gray-200">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+              <span class="text-accent font-bold text-sm">03</span>
+            </div>
+            <p class="font-semibold text-gray-900 mb-2 text-base">My Medical Records</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Empty-state onboarding encouraging upload or EHR connection, followed by full record management — download, print, and secure sending directly to providers or facilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 05 · VISUAL DESIGN                             -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-4" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="05"
+        label="Visual Design System"
+        title="A healthcare brand that feels personal"
+        description="The visual language needed to feel trustworthy and clinical on web, and warm and consumer-friendly on mobile — unified under the mybioX identity."
+      />
+
+      <!-- Color system -->
+      <div data-animate class="opacity-0 mb-8 sm:mb-10">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Design Tokens</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: linear-gradient(135deg, #8ba0d4, #a78bfa);"></div>
+            <p class="text-xs font-mono text-gray-900">Brand Gradient</p>
+            <p class="text-[10px] text-gray-500">Periwinkle → Violet</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #6B5CE7;"></div>
+            <p class="text-xs font-mono text-gray-900">#6B5CE7</p>
+            <p class="text-[10px] text-gray-500">Primary Action</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #00BFFF;"></div>
+            <p class="text-xs font-mono text-gray-900">#00BFFF</p>
+            <p class="text-[10px] text-gray-500">Interactive / Links</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+            <div class="w-10 h-10 rounded-full mx-auto mb-2" style="background: #EC4899;"></div>
+            <p class="text-xs font-mono text-gray-900">#EC4899</p>
+            <p class="text-[10px] text-gray-500">Emergency / Urgent</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual principles -->
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Dual Tone Approach</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Web portal uses a clean clinical light theme; the mobile app uses a warm blue-to-purple gradient to feel approachable and personal.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Icon-Driven Navigation</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Mobile features use icon tiles with clear labels — reducing literacy barriers and making features discoverable at a glance.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Semantic Color System</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Pink/red signals emergency access, blue signals interactivity, purple signals primary actions — consistent across both platforms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 06 · MOBILE APP                                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-5" class="py-16 md:py-24 bg-gray-950 text-white overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-10 sm:mb-14">
+      <SectionHeader
+        step="06"
+        label="Mobile App — mybioX"
+        title="A patient's health, in their pocket"
+        description="The mybioX mobile app brings the full portal experience to iPhone — secure login, a personalised dashboard, provider discovery, and appointment scheduling."
+        light={true}
+      />
+    </div>
+
+    <!-- Mobile screens -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4">
+          {mobileScreens.map((screen) => (
+            <div>
+              <div class="rounded-2xl overflow-hidden border border-gray-700 shadow-lg bg-gray-900">
+                <img
+                  src={screen.src}
+                  alt={screen.alt}
+                  class="w-full h-auto block"
+                  style="image-rendering: -webkit-optimize-contrast;"
+                />
+              </div>
+              <p class="text-[10px] sm:text-xs text-gray-400 text-center mt-2">{screen.caption}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile feature callouts -->
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mt-12 sm:mt-16">
+      <div data-animate class="opacity-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <p class="font-semibold text-white mb-2 text-base">Secure Onboarding</p>
+            <p class="text-sm text-gray-400 leading-relaxed">OTP verification at login keeps health data secure while keeping the sign-up flow fast and low-friction.</p>
+          </div>
+          <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <p class="font-semibold text-white mb-2 text-base">Smart Provider Discovery</p>
+            <p class="text-sm text-gray-400 leading-relaxed">Card-based provider browsing with location, star ratings, availability hours, and one-tap scheduling — modeled after familiar consumer app patterns.</p>
+          </div>
+          <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <p class="font-semibold text-white mb-2 text-base">Appointment Scheduling</p>
+            <p class="text-sm text-gray-400 leading-relaxed">Calendar view with available time slots and audio/video appointment type selection — fully digital from provider discovery to confirmed booking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- 07 · OUTCOMES & REFLECTION                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="section-6" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <SectionHeader
+        step="07"
+        label="Outcome & Impact"
+        title="Measurable design decisions"
+      />
+
+      <MetricCards
+        metrics={[
+          { value: '3 modes', label: 'Provider search paths', detail: 'NPI number, name, or organization — all routes covered' },
+          { value: '9 sections', label: 'Patient portal modules', detail: 'Dashboard, records, care team, billing, documents & more' },
+          { value: '3 phases', label: 'Lab workflows documented', detail: 'Pre-analytical, analytical, post-analytical + exception flows' },
+        ]}
+      />
+
+      <div data-animate class="opacity-0 mt-8 sm:mt-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Unified health identity</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">The mybioX ID card gives every patient a physical and digital identifier, enabling seamless record sharing across any provider or facility in the network.</p>
+          </div>
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Lab-to-patient pipeline</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Digitized lab workflows create a direct pipeline from specimen testing to patient-accessible results — removing the information gap that delays care decisions.</p>
+          </div>
+          <div class="p-4 sm:p-5">
+            <p class="font-semibold text-gray-900 mb-2 text-base">Consumer-grade health UX</p>
+            <p class="text-sm sm:text-base text-gray-500 leading-relaxed">The mobile app brought familiar consumer patterns — card browsing, calendar scheduling, chat — into the healthcare experience, lowering the barrier to engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflection -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div data-animate class="opacity-0">
+        <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-4">Reflection</p>
+        <p class="text-gray-900 text-lg sm:text-xl leading-relaxed font-light">
+          This project was uniquely complex because it required designing for two entirely different worlds simultaneously — the clinical precision of lab workflow documentation and the consumer simplicity patients expect from a health app.
+        </p>
+        <p class="text-gray-500 text-base sm:text-lg leading-relaxed mt-6">
+          The biggest insight was that patients don't think in "pre-analytical" and "post-analytical" — they just want to know their results and understand their health. Every design decision had to translate clinical complexity into human clarity. Getting that translation right, across both web and mobile, was the defining challenge of the engagement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <CaseStudyNav
+    prev={{ label: 'Car Care Inc.', href: '/work/carcare' }}
+    next={{ label: 'All Work', href: '/' }}
+  />
+
 </BaseLayout>

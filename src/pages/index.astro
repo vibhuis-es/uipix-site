@@ -10,7 +10,7 @@ const caseStudies = [
     role: 'UX Designer',
     industry: 'Hospitality & FinTech',
     year: '2019',
-    duration: '8 months',
+    duration: '12 weeks',
     platform: 'Web & Mobile',
     image: '/images/encore/Exe-mockup.webp',
     imageAlt: 'Encore dashboard mockup',
@@ -33,21 +33,21 @@ const caseStudies = [
     process: ['Research', 'IA', 'Wireframes', 'Visual Design', 'Prototype'],
     featured: true,
   },
-  // {
-  //   title: 'Symbio6',
-  //   description: 'Healthcare Platform (Coming Soon)',
-  //   summary: 'A healthcare experience design project — case study in progress.',
-  //   role: 'UX Designer',
-  //   industry: 'Healthcare',
-  //   year: '2020',
-  //   duration: '',
-  //   platform: '',
-  //   image: '/images/symbio6-placeholder.webp',
-  //   imageAlt: 'Symbio6 project preview',
-  //   href: '/work/symbio6',
-  //   process: [],
-  //   featured: false,
-  // },
+  {
+    title: 'Symbio6',
+    description: 'Integrated Healthcare Platform & Patient Portal',
+    summary: 'Designed a patient portal and mobile app that unifies health records, lab workflows, and provider connectivity — giving patients full ownership of their health data.',
+    role: 'UX Designer',
+    industry: 'Healthcare',
+    year: '2020',
+    duration: '12 weeks',
+    platform: 'Web & Mobile',
+    image: '/images/symbio6/heroshot.png',
+    imageAlt: 'mybioX — Patient Portal on MacBook',
+    href: '/work/symbio6',
+    process: ['Research', 'IA', 'Wireframes', 'Visual Design', 'Mobile App'],
+    featured: true,
+  },
 ];
 
 const featured = caseStudies.filter(s => s.featured);
@@ -62,7 +62,7 @@ const other = caseStudies.filter(s => !s.featured);
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-[1400px] mx-auto px-5 md:px-8">
       <div data-animate class="opacity-0 mb-10 md:mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">Selected Work</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">Latest Work</h2>
         <p class="text-gray-600 mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg leading-relaxed">
           A selection of recent projects where I designed digital experiences that solve real problems through research-driven and human-centered approaches.
         </p>
@@ -112,7 +112,6 @@ const other = caseStudies.filter(s => !s.featured);
                   {study.platform && (
                     <div>{study.platform}</div>
                   )}
-                  <div>{study.year}</div>
                 </div>
 
                 <!-- Arrow -->
