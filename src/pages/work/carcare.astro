@@ -10,10 +10,14 @@ import ScreenGallery from '../../components/case-study/ScreenGallery.astro';
 import CaseStudyNav from '../../components/case-study/CaseStudyNav.astro';
 
 const hifiScreens = [
-  { src: '/images/carcare/HiFi-1.png', alt: 'Work Order Dashboard', caption: 'Work Order Dashboard' },
-  { src: '/images/carcare/HiFi-2.webp', alt: 'Vehicle Intake', caption: 'Vehicle Intake' },
-  { src: '/images/carcare/HiFi-3.webp', alt: 'Diagnosis & Findings', caption: 'Diagnosis & Findings' },
-  { src: '/images/carcare/HiFi-4.webp', alt: 'Repair Summary', caption: 'Repair Summary' },
+  { src: '/images/carcare/Work-orders.png', alt: 'Work Orders Dashboard', title: 'Work Orders', desc: 'Dashboard showing all active work orders with status badges and quick actions' },
+  { src: '/images/carcare/Check-in.png', alt: 'Vehicle Check-in', title: 'Check-in', desc: 'VIN scanner auto-populates vehicle details, reducing manual data entry' },
+  { src: '/images/carcare/Complaints.png', alt: 'Complaint Capture', title: 'Complaints', desc: 'Pre-populated complaint categories with tap-to-select, eliminating typing' },
+  { src: '/images/carcare/Diagnosis.png', alt: 'Diagnosis & Findings', title: 'Diagnosis', desc: 'Visual documentation with photo annotation and voice notes for low-typing workflows' },
+  { src: '/images/carcare/Parts.png', alt: 'Parts & Inventory', title: 'Parts', desc: 'Real-time stock visibility with supplier comparison and one-tap adding' },
+  { src: '/images/carcare/Estimate.png', alt: 'Cost Estimate', title: 'Estimate', desc: 'Auto-calculated estimate with adjustable labor hours and transparent pricing' },
+  { src: '/images/carcare/Review.png', alt: 'Customer Review', title: 'Review', desc: 'Visual proof with plain-language explanations and digital signature capture' },
+  { src: '/images/carcare/Complete.png', alt: 'Job Complete', title: 'Complete', desc: 'Final invoice with payment method selection and completion signature' },
 ];
 
 const wireframeScreens = [
@@ -281,51 +285,105 @@ const wireframeScreens = [
         description="Core principles guiding every design decision for the workshop environment."
       />
 
-      <div data-animate class="opacity-0 mb-8 sm:mb-10">
-        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-          <img src="/images/carcare/Design-direction.webp" alt="UX Design Principles" class="w-full h-auto block" />
-        </div>
-      </div>
-
       <div data-animate class="opacity-0">
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Minimize Typing</p>
-            <p class="text-xs sm:text-sm text-gray-500">VIN scan, voice input, quick-select over keyboards</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Smart defaults, pre-populated options, voice input</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Quick-select menus for common repairs</li>
+              <li>Auto-complete for parts and services</li>
+              <li>Template-based descriptions</li>
+            </ul>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Maximize Quick-Select</p>
-            <p class="text-xs sm:text-sm text-gray-500">Pre-populated options for common repairs and parts</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Taps, toggles, and selections over typing</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Checkbox lists for common issues</li>
+              <li>Visual part selectors</li>
+              <li>One-tap status updates</li>
+            </ul>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Guided Workflow</p>
-            <p class="text-xs sm:text-sm text-gray-500">Step-by-step progression reduces cognitive load</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Clear direction at every stage</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Step-by-step indicators</li>
+              <li>Clear next action buttons</li>
+              <li>Progress visualization</li>
+            </ul>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Reduce Cognitive Load</p>
-            <p class="text-xs sm:text-sm text-gray-500">One task per screen, clear hierarchy</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Simplify decisions, minimize on-screen options</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Show only relevant options per step</li>
+              <li>Smart field ordering</li>
+              <li>Hide advanced features by default</li>
+            </ul>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Workshop-Ready</p>
-            <p class="text-xs sm:text-sm text-gray-500">High contrast, large touch targets, glove-friendly</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Gloves, bright lights, outdoor conditions</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Large touch targets (48px minimum)</li>
+              <li>High contrast UI elements</li>
+              <li>No small text or controls</li>
+            </ul>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            </div>
             <p class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Fail-Safe Documentation</p>
-            <p class="text-xs sm:text-sm text-gray-500">Auto-save, offline sync, zero data loss</p>
+            <p class="text-xs sm:text-sm text-gray-500 mb-2">Never lose data, auto-save frequently</p>
+            <ul class="text-xs text-gray-400 space-y-1">
+              <li>Auto-save every action</li>
+              <li>Offline capability</li>
+              <li>Clear save status indicators</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <div data-animate class="opacity-0 mt-6 sm:mt-8">
-        <div class="grid grid-cols-3 gap-3 sm:gap-4">
-          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
-            <p class="font-semibold text-accent text-sm sm:text-base">Speed First</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 border border-accent/20">
+            <div class="flex items-center gap-2 mb-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <p class="font-semibold text-accent text-sm sm:text-base">Speed First</p>
+            </div>
+            <p class="text-xs text-gray-500">Every interaction optimized for the fastest possible completion time</p>
           </div>
-          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
-            <p class="font-semibold text-accent text-sm sm:text-base">Zero Learning Curve</p>
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 border border-accent/20">
+            <div class="flex items-center gap-2 mb-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <p class="font-semibold text-accent text-sm sm:text-base">Zero Learning Curve</p>
+            </div>
+            <p class="text-xs text-gray-500">Intuitive enough to use immediately without training or documentation</p>
           </div>
-          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 text-center border border-accent/20">
-            <p class="font-semibold text-accent text-sm sm:text-base">Workshop-Ready</p>
+          <div class="bg-accent/5 rounded-xl p-4 sm:p-5 border border-accent/20">
+            <div class="flex items-center gap-2 mb-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              <p class="font-semibold text-accent text-sm sm:text-base">Workshop-Ready</p>
+            </div>
+            <p class="text-xs text-gray-500">Designed specifically for the physical constraints of automotive repair environments</p>
           </div>
         </div>
       </div>
@@ -534,8 +592,8 @@ const wireframeScreens = [
   </section>
 
   <!-- High-Fidelity Gallery -->
-  <section class="py-16 md:py-24 bg-gray-950 text-white overflow-hidden">
-    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-8 sm:mb-10">
+  <section class="py-10 md:py-16 bg-gray-950 text-white overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 mb-4 sm:mb-6">
       <SectionHeader
         label="High-Fidelity Designs"
         title="Production-ready screens"
@@ -545,15 +603,89 @@ const wireframeScreens = [
     </div>
 
     <div class="max-w-[1400px] mx-auto px-4 md:px-8">
-      <ScreenGallery
-        id="cc-hifi"
-        screens={hifiScreens}
-        dark={true}
-        thumbWidth="80px"
-        duration={4500}
-      />
+      <div data-animate class="opacity-0">
+        <div class="hifi-carousel relative group overflow-hidden" data-hifi-carousel>
+          <div class="hifi-track flex transition-transform duration-500 ease-out" data-hifi-track>
+            {[0, 2, 4, 6].map((startIdx, pageIdx) => (
+              <div class="hifi-page flex-shrink-0 w-full grid grid-cols-1 sm:grid-cols-2 gap-5 px-1" data-hifi-page={pageIdx}>
+                {hifiScreens.slice(startIdx, startIdx + 2).map((s) => (
+                  <div class="flex flex-col">
+                    <div class="rounded-xl overflow-hidden border border-gray-800 shadow-sm">
+                      <img src={s.src} alt={s.alt} class="w-full h-auto block hifi-img" />
+                    </div>
+                    <div class="mt-2 px-1">
+                      <p class="font-semibold text-white text-xs sm:text-sm">{s.title}</p>
+                      <p class="text-[11px] sm:text-xs text-gray-400 mt-0.5 leading-snug">{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <button class="hifi-prev absolute left-2 top-[40%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/20" aria-label="Previous screens">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="hifi-next absolute right-2 top-[40%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/20" aria-label="Next screens">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <div class="flex justify-center gap-2 mt-6">
+            {[0, 1, 2, 3].map((i) => (
+              <button class={`hifi-dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-accent w-6' : 'bg-gray-600 hover:bg-gray-500'}`} data-hifi-dot={i}></button>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <style>
+    .hifi-img {
+      max-height: calc(100vh - 320px);
+      object-fit: contain;
+      object-position: top;
+    }
+  </style>
+
+  <script>
+    function initHifiCarousels() {
+      document.querySelectorAll('[data-hifi-carousel]').forEach((el) => {
+        const carousel = el as HTMLElement;
+        if (carousel.dataset.hifiInit) return;
+        carousel.dataset.hifiInit = 'true';
+
+        const track = carousel.querySelector('[data-hifi-track]') as HTMLElement;
+        const pages = carousel.querySelectorAll('[data-hifi-page]') as NodeListOf<HTMLElement>;
+        const dots = carousel.querySelectorAll('[data-hifi-dot]') as NodeListOf<HTMLElement>;
+        const prevBtn = carousel.querySelector('.hifi-prev') as HTMLElement;
+        const nextBtn = carousel.querySelector('.hifi-next') as HTMLElement;
+
+        // Filter to only even-indexed pages (each contains 2 screens)
+        const totalPages = 4;
+        let current = 0;
+
+        function goTo(index: number) {
+          current = index;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((d, i) => {
+            d.classList.toggle('bg-accent', i === index);
+            d.classList.toggle('w-6', i === index);
+            d.classList.toggle('bg-gray-600', i !== index);
+            d.classList.toggle('w-2', i !== index);
+          });
+        }
+
+        prevBtn?.addEventListener('click', () => goTo((current - 1 + totalPages) % totalPages));
+        nextBtn?.addEventListener('click', () => goTo((current + 1) % totalPages));
+        dots.forEach((d) => {
+          d.addEventListener('click', () => goTo(parseInt(d.dataset.hifiDot || '0')));
+        });
+      });
+    }
+    initHifiCarousels();
+    document.addEventListener('astro:page-load', initHifiCarousels);
+  </script>
 
   <!-- ══════════════════════════════════════════════ -->
   <!-- 06 · INTERACTIVE PROTOTYPE                     -->
