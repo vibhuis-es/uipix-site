@@ -137,8 +137,11 @@ const certifications = [
                 class="w-full h-auto block"
               />
             </div>
-            <!-- Decorative accent -->
+            <!-- Decorative accents -->
             <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-2xl -z-10"></div>
+            <div class="absolute -top-3 -left-3 w-16 h-16 rounded-full bg-accent/6 -z-10 about-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 -right-6 w-3 h-3 rounded-full bg-accent/25 about-float" style="animation-delay: 0.5s;"></div>
+            <div class="absolute -bottom-2 left-1/4 w-2.5 h-2.5 rounded-full bg-accent/20 about-float" style="animation-delay: 1.8s;"></div>
           </div>
         </div>
       </div>
@@ -287,4 +290,12 @@ const certifications = [
     </div>
   </section>
 
+
+<style>
+  @keyframes aboutFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .about-float { animation: aboutFloat 5s ease-in-out infinite; }
+</style>
 </BaseLayout>
